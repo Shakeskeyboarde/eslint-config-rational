@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/Shakeskeyboarde/eslint-config-rational#readme",
   "scripts": {
-    "test": "eslint test --max-warnings=0"
+    "test": "eslint test --max-warnings=0",
+    "prepublishOnly": "npm test"
   },
   "main": "index.js",
   "files": [
