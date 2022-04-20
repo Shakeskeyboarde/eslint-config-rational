@@ -40,7 +40,6 @@ module.exports = {
     'unicorn/no-array-method-this-argument': 'warn',
     'unicorn/no-hex-escape': 'warn',
     'unicorn/no-instanceof-array': 'warn',
-    'unicorn/no-keyword-prefix': ['warn', { disallowedPrefixes: ['new'] }],
     'unicorn/no-lonely-if': 'warn',
     'unicorn/no-new-array': 'warn',
     'unicorn/no-new-buffer': 'warn',
