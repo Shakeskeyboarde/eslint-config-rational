@@ -11,4 +11,8 @@ const str = '';
 const fn = '';
 const ref = '';
 
+// const foo = (ref: string) => {
+//   ref;
+// };
+
 export {};

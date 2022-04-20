@@ -11,6 +11,7 @@ module.exports = {
     'functional/prefer-tacit': 'warn',
     'import/exports-last': 'warn',
     'import/group-exports': 'warn',
+    'import/no-cycle': 'warn',
     'import/no-default-export': 'warn',
     'import/no-extraneous-dependencies': [
       'warn',
@@ -26,8 +27,10 @@ module.exports = {
         ],
       },
     ],
+    'import/no-self-import': 'warn',
     'import/order': 'off',
     'import/prefer-default-export': 'off',
+    'no-shadow': 'warn',
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': 'warn',
     'unicorn/consistent-destructuring': 'warn',
