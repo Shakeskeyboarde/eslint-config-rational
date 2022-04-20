@@ -7,5 +7,8 @@ const str = '';
 // const dev = '';
 // const prod = '';
 // const err = '';
+// const std = '';
+const fn = '';
+const ref = '';
 
 export {};
