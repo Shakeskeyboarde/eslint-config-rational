@@ -1,0 +1,20 @@
+/** @type {import('eslint').Linter.Config} */
+module.exports = {
+  extends: [
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:typescript-sort-keys/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
+  rules: {
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
+    '@typescript-eslint/consistent-type-imports': 'warn',
+    '@typescript-eslint/method-signature-style': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/sort-type-union-intersection-members': 'warn',
+    'canonical/prefer-inline-type-import': 'warn',
+    'functional/prefer-readonly-type': ['warn', { allowLocalMutation: true, allowMutableReturnType: true }],
+  },
+};
