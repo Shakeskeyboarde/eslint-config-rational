@@ -18,7 +18,7 @@ Inspired by [Canonical ESLint Config](https://www.npmjs.com/package/eslint-confi
 Install the `eslint-config-rational` package.
 
 ```bash
-npm i -D eslint-config-rational
+npm i -D eslint-config-rational eslint
 ```
 
 You may also want to install `react`, `typescript`, and `prettier` if you intend to use the corresponding configurations.
