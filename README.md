@@ -26,6 +26,7 @@ You may also want to install `react`, `typescript`, and `prettier` if you intend
 ## Configurations
 
 - `rational` - The base configuration (should be the first `extends` entry).
+- `rational/classless` - Disallow classes in favor of functional(-ish) code.
 - `rational/react` - Add React support.
 - `rational/typescript` - Add Typescript support.
 - `rational/warn` - Turn all errors into warnings.
@@ -56,7 +57,7 @@ This configuration is for a TS web project with JS configuration files. If the p
 ```js
 module.exports = {
   env: { node: true },
-  extends: ['rational', 'rational/warn', 'rational/prettier'],
+  extends: ['rational', 'rational/classless', 'rational/warn', 'rational/prettier'],
   ignorePatterns: ['node_modules', 'lib', 'out', 'dist'],
   overrides: [
     {
@@ -69,7 +70,7 @@ module.exports = {
     },
     {
       env: { node: false },
-      extends: ['rational', 'rational/react', 'rational/typescript', 'rational/warn', 'rational/prettier'],
+      extends: ['rational', 'rational/classless', 'rational/react', 'rational/typescript', 'rational/warn', 'rational/prettier'],
       files: ['*.ts', '*.tsx'],
       parserOptions: { project: './tsconfig.json' },
     },

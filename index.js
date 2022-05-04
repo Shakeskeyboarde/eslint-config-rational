@@ -6,8 +6,6 @@ module.exports = {
   rules: {
     'canonical/sort-keys': 'warn',
     'func-style': 'warn',
-    'functional/no-class': 'warn',
-    'functional/no-this-expression': 'warn',
     'functional/prefer-tacit': 'warn',
     'import/exports-last': 'warn',
     'import/group-exports': 'warn',
