@@ -29,6 +29,7 @@ module.exports = {
     'import/no-self-import': 'warn',
     'import/order': 'off',
     'import/prefer-default-export': 'off',
+    'max-lines': ['warn', { max: 150, skipBlankLines: true, skipComments: true }],
     'no-shadow': 'warn',
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': 'warn',
