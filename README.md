@@ -57,7 +57,7 @@ This configuration is for a TS web project with JS configuration files. If the p
 ```js
 module.exports = {
   env: { node: true },
-  extends: ['rational', 'rational/classless', 'rational/warn', 'rational/prettier'],
+  extends: ['rational', 'rational/warn', 'rational/classless', 'rational/prettier'],
   ignorePatterns: ['node_modules', 'lib', 'out', 'dist'],
   overrides: [
     {
@@ -70,7 +70,7 @@ module.exports = {
     },
     {
       env: { node: false },
-      extends: ['rational', 'rational/classless', 'rational/react', 'rational/typescript', 'rational/warn', 'rational/prettier'],
+      extends: ['rational/react', 'rational/typescript', 'rational/prettier'],
       files: ['*.ts', '*.tsx'],
       parserOptions: { project: './tsconfig.json' },
     },

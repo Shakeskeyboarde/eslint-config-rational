@@ -6,6 +6,7 @@ module.exports = {
     'plugin:typescript-sort-keys/recommended',
   ],
   parser: '@typescript-eslint/parser',
+  plugins: ['canonical', 'functional'],
   rules: {
     '@typescript-eslint/array-type': 'warn',
     '@typescript-eslint/ban-types': 'off',
