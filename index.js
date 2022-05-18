@@ -2,11 +2,10 @@
 module.exports = {
   env: { es2021: true },
   extends: ['eslint:recommended', 'plugin:import/recommended'],
-  plugins: ['canonical', 'simple-import-sort', 'functional', 'unicorn'],
+  plugins: ['canonical', 'simple-import-sort', 'unicorn'],
   rules: {
     'canonical/sort-keys': 'warn',
     'func-style': 'warn',
-    'functional/prefer-tacit': 'warn',
     'import/exports-last': 'warn',
     'import/group-exports': 'warn',
     'import/no-cycle': 'warn',
@@ -30,6 +29,7 @@ module.exports = {
     'import/order': 'off',
     'import/prefer-default-export': 'off',
     'max-lines': ['warn', { max: 150, skipBlankLines: true, skipComments: true }],
+    'no-param-reassign': ['warn', { props: true }],
     'no-shadow': 'warn',
     'no-useless-rename': 'warn',
     'simple-import-sort/exports': 'warn',
