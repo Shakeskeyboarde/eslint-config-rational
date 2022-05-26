@@ -5,6 +5,15 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:typescript-sort-keys/recommended',
   ],
+  overrides: [
+    {
+      files: ['*.test.*'],
+      rules: {
+        '@typescript-eslint/no-empty-function': 'off',
+        'functional/prefer-readonly-type': 'off',
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['canonical', 'functional'],
   rules: {

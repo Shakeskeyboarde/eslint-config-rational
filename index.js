@@ -2,6 +2,14 @@
 module.exports = {
   env: { es2021: true },
   extends: ['eslint:recommended', 'plugin:import/recommended'],
+  overrides: [
+    {
+      files: ['*.test.*'],
+      rules: {
+        'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
+      },
+    },
+  ],
   plugins: ['canonical', 'simple-import-sort', 'unicorn'],
   rules: {
     'canonical/sort-keys': 'warn',
@@ -65,6 +73,7 @@ module.exports = {
           acc: { accumulator: false, result: true },
           arg: false,
           args: false,
+          ctx: false,
           fn: false,
           prop: false,
           props: false,
