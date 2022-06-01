@@ -75,6 +75,8 @@ module.exports = {
           args: false,
           ctx: false,
           fn: false,
+          param: false,
+          params: false,
           prop: false,
           props: false,
           ref: false,
