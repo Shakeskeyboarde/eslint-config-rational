@@ -11,12 +11,9 @@ module.exports = {
       },
     },
   ],
-  plugins: ['canonical', 'simple-import-sort', 'unicorn', 'destructuring'],
+  plugins: ['canonical', 'simple-import-sort', 'unicorn'],
   rules: {
     'canonical/sort-keys': 'warn',
-    'destructuring/in-methods-params': 'warn',
-    'destructuring/in-params': ['warn', { 'max-params': 0 }],
-    'destructuring/no-rename': 'warn',
     'func-style': 'warn',
     'import/exports-last': 'warn',
     'import/group-exports': 'warn',
