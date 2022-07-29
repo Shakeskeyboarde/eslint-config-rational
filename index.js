@@ -82,7 +82,6 @@ module.exports = {
           args: false,
           argument: { arg: true },
           arguments: { args: true },
-          context: { ctx: true },
           ctx: false,
           dir: false,
           env: false,
