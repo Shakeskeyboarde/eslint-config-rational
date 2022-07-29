@@ -2,7 +2,7 @@
 /* eslint-disable unicorn/prevent-abbreviations */
 module.exports = {
   env: { es2021: true },
-  extends: ['eslint:recommended', 'plugin:import/recommended'],
+  extends: ['eslint:recommended', 'plugin:import/recommended', 'plugin:destructure-object/recommended'],
   overrides: [
     {
       files: ['*.test.*'],
