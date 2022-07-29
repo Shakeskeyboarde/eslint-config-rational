@@ -10,6 +10,7 @@ const str = '';
 // const std = '';
 const fn = '';
 const ref = '';
+// const { a: b } = { a: '' };
 
 // const foo = (ref: string) => {
 //   ref;

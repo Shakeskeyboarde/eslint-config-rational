@@ -14,7 +14,8 @@ module.exports = {
   plugins: ['canonical', 'simple-import-sort', 'unicorn', 'destructuring'],
   rules: {
     'canonical/sort-keys': 'warn',
-    'destructuring/in-params': 'warn',
+    'destructuring/in-methods-params': 'warn',
+    'destructuring/in-params': ['warn', { 'max-params': 0 }],
     'destructuring/no-rename': 'warn',
     'func-style': 'warn',
     'import/exports-last': 'warn',
@@ -75,6 +76,7 @@ module.exports = {
       'warn',
       {
         checkFilenames: false,
+        ignore: ['^(?:create|get|set|has|remove|on|is)?[A-Z]'],
         replacements: {
           acc: { accumulator: false, result: true },
           accumulator: { result: true },
