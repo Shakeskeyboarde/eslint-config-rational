@@ -1,4 +1,5 @@
 /** @type {import('eslint').Linter.Config} */
+/* eslint-disable unicorn/prevent-abbreviations */
 module.exports = {
   env: { es2021: true },
   extends: ['eslint:recommended', 'plugin:import/recommended'],
@@ -72,6 +73,8 @@ module.exports = {
       'warn',
       {
         checkFilenames: false,
+        checkProperties: true,
+        ignore: ['[A-Z]'],
         replacements: {
           acc: { accumulator: false, result: true },
           accumulator: { result: true },
@@ -81,6 +84,10 @@ module.exports = {
           arguments: { args: true },
           context: { ctx: true },
           ctx: false,
+          dir: false,
+          directory: { dir: true },
+          env: false,
+          environment: { env: true },
           fn: false,
           function: { fn: true },
           i: false,
