@@ -16,6 +16,7 @@ module.exports = {
     'canonical/sort-keys': 'warn',
     'func-style': 'warn',
     'import/exports-last': 'warn',
+    'import/extensions': ['warn', 'ignorePackages'],
     'import/group-exports': 'warn',
     'import/no-cycle': 'warn',
     'import/no-default-export': 'warn',
