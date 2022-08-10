@@ -30,7 +30,10 @@ module.exports = {
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
     '@typescript-eslint/sort-type-union-intersection-members': 'warn',
     'canonical/prefer-inline-type-import': 'warn',
-    'functional/prefer-readonly-type': ['warn', { allowLocalMutation: true, allowMutableReturnType: true }],
+    'functional/prefer-readonly-type': [
+      'warn',
+      { allowLocalMutation: true, allowMutableReturnType: true, ignorePattern: '^_*mutable' },
+    ],
     'no-shadow': 'off',
   },
 };
