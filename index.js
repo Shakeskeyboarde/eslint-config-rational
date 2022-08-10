@@ -42,7 +42,6 @@ module.exports = {
     'import/order': 'off',
     'import/prefer-default-export': 'off',
     'max-lines': ['warn', { max: 150, skipBlankLines: true, skipComments: true }],
-    'no-param-reassign': ['warn', { props: true }],
     'no-shadow': 'warn',
     'no-useless-rename': 'warn',
     'simple-import-sort/exports': 'warn',
