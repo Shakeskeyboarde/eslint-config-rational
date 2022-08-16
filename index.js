@@ -55,7 +55,6 @@ module.exports = {
     'unicorn/no-abusive-eslint-disable': 'warn',
     'unicorn/no-array-method-this-argument': 'warn',
     'unicorn/no-hex-escape': 'warn',
-    'unicorn/no-instanceof-array': 'warn',
     'unicorn/no-lonely-if': 'warn',
     'unicorn/no-new-array': 'warn',
     'unicorn/no-new-buffer': 'warn',
