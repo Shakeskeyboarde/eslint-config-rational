@@ -86,6 +86,7 @@ module.exports = {
           err: false,
           fn: false,
           i: false,
+          package: false,
           param: false,
           parameter: { param: true },
           parameters: { params: true },
