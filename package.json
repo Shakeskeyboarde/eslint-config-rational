@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-rational",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Minimal ESLint configurations for reducing version control noise and avoiding common mistakes.",
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   "homepage": "https://github.com/Shakeskeyboarde/eslint-config-rational#readme",
   "scripts": {
     "test": "eslint test --max-warnings=0",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm test",
+    "modernize": "npx npm-check-updates -i --format group"
   },
   "main": "index.js",
   "files": [
@@ -29,26 +30,26 @@
     "!.*"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
-    "eslint-plugin-canonical": "^3.0.2",
+    "eslint-import-resolver-typescript": "^3.5.0",
+    "eslint-plugin-canonical": "^3.1.0",
     "eslint-plugin-destructure-object": "^1.0.0",
-    "eslint-plugin-functional": "^4.2.1",
+    "eslint-plugin-functional": "^4.2.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-only-warn": "^1.0.3",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.5",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
-    "eslint-plugin-unicorn": "^42.0.0"
+    "eslint-plugin-unicorn": "^43.0.2"
   },
   "devDependencies": {
-    "eslint": "^8.13.0",
-    "prettier": "^2.6.2",
-    "react": "^18.0.0",
-    "typescript": "^4.6.3"
+    "eslint": "^8.23.0",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "typescript": "^4.8.2"
   }
 }
