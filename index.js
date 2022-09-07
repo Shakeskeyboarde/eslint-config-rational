@@ -42,6 +42,25 @@ module.exports = {
     'import/order': 'off',
     'import/prefer-default-export': 'off',
     'max-lines': ['warn', { max: 150, skipBlankLines: true, skipComments: true }],
+    'no-restricted-syntax': [
+      'error',
+      {
+        message: 'Exports with leading underscores are not allowed.',
+        selector: 'ExportNamedDeclaration > ExportSpecifier[exported.name=/^_.*/]',
+      },
+      {
+        message: 'Exporting locals with leading underscores is not allowed.',
+        selector: 'ExportNamedDeclaration > ExportSpecifier[local.name=/^_.*/]',
+      },
+      {
+        message: 'Exporting variables with leading underscores is not allowed.',
+        selector: 'ExportNamedDeclaration > VariableDeclaration > VariableDeclarator[id.name=/^_.*/]',
+      },
+      {
+        message: 'Exporting types with leading underscores is not allowed.',
+        selector: 'ExportNamedDeclaration > [id.name=/^_.*/]',
+      },
+    ],
     'no-shadow': 'warn',
     'no-useless-rename': 'warn',
     'simple-import-sort/exports': 'warn',

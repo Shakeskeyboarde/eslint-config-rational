@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-rational",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Minimal ESLint configurations for reducing version control noise and avoiding common mistakes.",
   "repository": {
     "type": "git",
@@ -30,17 +30,17 @@
     "!.*"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-canonical": "^3.1.0",
     "eslint-plugin-destructure-object": "^1.0.0",
     "eslint-plugin-functional": "^4.2.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-only-warn": "^1.0.3",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.5",
+    "eslint-plugin-react": "^7.31.7",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
