@@ -34,6 +34,7 @@ module.exports = {
       'warn',
       { allowLocalMutation: true, allowMutableReturnType: true, ignorePattern: '^_+' },
     ],
+    'import/extensions': 'off',
     'no-shadow': 'off',
   },
   settings: {

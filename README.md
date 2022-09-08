@@ -11,6 +11,7 @@ Inspired by [Canonical ESLint Config](https://www.npmjs.com/package/eslint-confi
 - Prefer immutability and functional(-ish) coding styles.
 - Prefer rules which are auto-fixable.
 - Avoid rules which require frequent inline disabling.
+- Avoid rules which are already covered by TypeScript.
 
 ## Getting Started
 
@@ -27,11 +28,11 @@ You may also want to install `react`, `typescript`, and `prettier` if you intend
 - `rational` - The base configuration (should be the first `extends` entry).
 - `rational/classless` - Disallow classes in favor of functional(-ish) code.
 - `rational/react` - Add React support.
-- `rational/typescript` - Add Typescript support.
+- `rational/typescript` - Add TypeScript support.
 - `rational/warn` - Turn all errors into warnings.
 - `rational/prettier` - Add Prettier support (should be the last `extends` entry).
 
-### Typescript
+### TypeScript
 
 When using `rational/typescript`, you should also set the `parserOptions.project` ESLint configuration value to the relative path of your `tsconfig.json` file. This is required for rules that require type information to work.
 
