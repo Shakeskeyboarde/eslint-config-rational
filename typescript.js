@@ -32,8 +32,16 @@ module.exports = {
     'canonical/prefer-inline-type-import': 'warn',
     'functional/prefer-readonly-type': [
       'warn',
-      { allowLocalMutation: true, allowMutableReturnType: true, ignorePattern: '^_*mutable' },
+      { allowLocalMutation: true, allowMutableReturnType: true, ignorePattern: '^_+' },
     ],
     'no-shadow': 'off',
+  },
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };

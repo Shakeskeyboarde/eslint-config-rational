@@ -6,12 +6,11 @@ Inspired by [Canonical ESLint Config](https://www.npmjs.com/package/eslint-confi
 
 ## Tenets
 
+- Prevent code patterns which frequently cause or lead to bugs.
 - Produce consistent source code without requiring functional changes.
 - Prefer immutability and functional(-ish) coding styles.
-- Avoid ambiguous or hard to read code.
-- Avoid code patterns which can cause or lead to easy typos.
-- Avoid rules which must be disabled in useful scenarios because there are no reasonable alternatives.
 - Prefer rules which are auto-fixable.
+- Avoid rules which require frequent inline disabling.
 
 ## Getting Started
 

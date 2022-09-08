@@ -91,7 +91,7 @@ module.exports = {
       'warn',
       {
         checkFilenames: false,
-        ignore: ['^(?:create|get|set|has|remove|on|is)?[A-Z]'],
+        ignore: ['^_*(?:create|get|set|has|remove|on|is)?[A-Z]'],
         replacements: {
           acc: { accumulator: false, result: true },
           accumulator: { result: true },
