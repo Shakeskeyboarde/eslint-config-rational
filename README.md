@@ -26,7 +26,7 @@ You may also want to install `react`, `typescript`, and `prettier` if you intend
 ## Configurations
 
 - `rational` - The base configuration (should be the first `extends` entry).
-- `rational/classless` - Disallow classes in favor of functional(-ish) code.
+- `rational/functional` - Require functional(-ish) code.
 - `rational/react` - Add React support.
 - `rational/typescript` - Add TypeScript support.
 - `rational/warn` - Turn all errors into warnings.
@@ -57,9 +57,13 @@ This configuration is for a TS web project with JS configuration files. If the p
 ```js
 module.exports = {
   env: { node: true },
-  extends: ['rational', 'rational/warn', 'rational/classless', 'rational/prettier'],
+  extends: ['rational', 'rational/warn', 'rational/prettier'],
   ignorePatterns: ['node_modules', 'lib', 'out', 'dist'],
   overrides: [
+    {
+      files: ['*.cjs'],
+      parserOptions: { sourceType: 'script' },
+    },
     {
       files: ['*.mjs'],
       parserOptions: { sourceType: 'module' },
@@ -69,8 +73,11 @@ module.exports = {
       parserOptions: { sourceType: require('./package.json').type === 'module' ? 'module' : 'script' },
     },
     {
-      env: { node: false },
-      extends: ['rational/react', 'rational/typescript', 'rational/prettier'],
+      extends: ['rational/react', 'rational/prettier'],
+      files: ['*.jsx', '*.tsx'],
+    },
+    {
+      extends: ['rational/typescript', 'rational/prettier'],
       files: ['*.ts', '*.tsx'],
       parserOptions: { project: './tsconfig.json' },
     },
