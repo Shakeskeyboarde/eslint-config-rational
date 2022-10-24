@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['canonical', 'simple-import-sort', 'unicorn'],
   rules: {
     'canonical/sort-keys': 'warn',
+    'destructure-object/no-rename': 'off',
     'func-style': 'warn',
     'import/exports-last': 'warn',
     'import/extensions': ['warn', 'ignorePackages'],
