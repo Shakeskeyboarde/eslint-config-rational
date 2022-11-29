@@ -67,7 +67,6 @@ module.exports = {
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': 'warn',
     'unicorn/consistent-destructuring': 'warn',
-    'unicorn/consistent-function-scoping': 'warn',
     'unicorn/error-message': 'warn',
     'unicorn/escape-case': 'warn',
     'unicorn/filename-case': 'warn',
