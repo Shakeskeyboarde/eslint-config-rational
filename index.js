@@ -2,7 +2,7 @@
 /* eslint-disable unicorn/prevent-abbreviations */
 module.exports = {
   env: { es2021: true },
-  extends: ['eslint:recommended', 'plugin:import/recommended', 'plugin:destructure-object/recommended'],
+  extends: ['eslint:recommended', 'plugin:import/recommended'],
   overrides: [
     {
       files: ['*.test.*'],
@@ -11,10 +11,8 @@ module.exports = {
       },
     },
   ],
-  plugins: ['canonical', 'simple-import-sort', 'unicorn'],
+  plugins: ['simple-import-sort', 'unicorn'],
   rules: {
-    'canonical/sort-keys': 'warn',
-    'destructure-object/no-rename': 'off',
     'func-style': 'warn',
     'import/exports-last': 'warn',
     'import/extensions': ['warn', 'ignorePackages'],
