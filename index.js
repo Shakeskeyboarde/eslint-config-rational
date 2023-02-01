@@ -61,6 +61,7 @@ module.exports = {
       },
     ],
     'no-shadow': 'warn',
+    'no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
     'no-useless-rename': 'warn',
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': 'warn',
