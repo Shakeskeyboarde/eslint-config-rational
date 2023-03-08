@@ -20,7 +20,7 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
     '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
-    '@typescript-eslint/method-signature-style': 'warn',
+    '@typescript-eslint/method-signature-style': ['warn', 'method'],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-floating-promises': 'warn',
     '@typescript-eslint/no-shadow': 'warn',
