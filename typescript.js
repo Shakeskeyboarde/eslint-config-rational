@@ -27,6 +27,7 @@ module.exports = {
     '@typescript-eslint/prefer-for-of': 'warn',
     '@typescript-eslint/prefer-reduce-type-parameter': 'warn',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
+    '@typescript-eslint/return-await': ['warn', 'always'],
   },
   settings: {
     'import/parsers': {
