@@ -6,6 +6,7 @@ module.exports = {
       files: ['*.test.*'],
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
         'functional/prefer-readonly-type': 'off',
       },
     },
