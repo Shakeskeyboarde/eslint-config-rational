@@ -19,6 +19,7 @@ module.exports = {
       rules: {
         'max-lines': 'off',
         'import/no-extraneous-dependencies': 'off',
+        'import/no-named-as-default-member': 'off',
       },
     },
   ],
