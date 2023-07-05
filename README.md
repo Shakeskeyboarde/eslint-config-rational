@@ -21,7 +21,7 @@ Install the `eslint-config-rational` package.
 npm i -D eslint-config-rational eslint
 ```
 
-You may also want to install `react`, `typescript`, and `prettier` if you intend to use the corresponding configurations.
+You may also want to install `react` and `typescript` if you intend to use the corresponding configurations.
 
 ## Configurations
 
@@ -30,7 +30,6 @@ You may also want to install `react`, `typescript`, and `prettier` if you intend
 - `rational/react` - Add React support.
 - `rational/typescript` - Add TypeScript support.
 - `rational/warn` - Turn all errors into warnings.
-- `rational/prettier` - Add Prettier support (should be the last `extends` entry).
 
 ### TypeScript
 
@@ -44,7 +43,7 @@ Using `rational/warn` makes development a little friendlier by not marking up yo
 
 ```js
 module.exports = {
-  extends: ['rational', 'rational/react', 'rational/typescript', 'rational/warn', 'rational/prettier'],
+  extends: ['rational', 'rational/react', 'rational/typescript', 'rational/warn'],
   parserOptions: { project: './tsconfig.json' },
   root: true,
 };
@@ -57,7 +56,7 @@ This configuration is for a TS web project with JS configuration files. If the p
 ```js
 module.exports = {
   env: { node: true },
-  extends: ['rational', 'rational/warn', 'rational/prettier'],
+  extends: ['rational', 'rational/warn'],
   ignorePatterns: ['node_modules', 'lib', 'out', 'dist'],
   overrides: [
     {
@@ -73,11 +72,11 @@ module.exports = {
       parserOptions: { sourceType: require('./package.json').type === 'module' ? 'module' : 'script' },
     },
     {
-      extends: ['rational/react', 'rational/prettier'],
+      extends: ['rational/react'],
       files: ['*.jsx', '*.tsx'],
     },
     {
-      extends: ['rational/typescript', 'rational/prettier'],
+      extends: ['rational/typescript'],
       files: ['*.ts', '*.tsx'],
       parserOptions: { project: './tsconfig.json' },
     },
