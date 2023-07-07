@@ -15,8 +15,6 @@ export default configFactory<{
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
         project: './tsconfig.json',
       },
       rules: {

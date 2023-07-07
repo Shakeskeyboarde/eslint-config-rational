@@ -1,6 +1,5 @@
 import base from './base.js';
 import imports from './imports.js';
-import javascript from './javascript.js';
 import prettier from './prettier.js';
 import react from './react.js';
 import typescript from './typescript.js';
@@ -22,7 +21,6 @@ export default configFactory<{
     relaxedFiles = constants.relaxedFiles,
   } = {}) => {
     const allFiles = getExtensionsGlob([...jsExtensions, ...tsExtensions, ...jsxExtensions]);
-    const jsFiles = getExtensionsGlob(jsExtensions);
     const tsFiles = getExtensionsGlob(tsExtensions);
     const jsxFiles = getExtensionsGlob(jsxExtensions);
 
@@ -30,10 +28,17 @@ export default configFactory<{
       ...base({ files: allFiles, relaxedFiles }),
       ...imports({ files: allFiles, relaxedFiles }),
       ...unicorn({ files: allFiles }),
-      ...javascript({ files: jsFiles, relaxedFiles }),
       ...typescript({ files: tsFiles, relaxedFiles }),
       ...react({ files: jsxFiles }),
       ...prettier({ files: allFiles }),
+      {
+        languageOptions: {
+          parserOptions: {
+            sourceType: 'module',
+            ecmaVersion: 'latest',
+          },
+        },
+      },
     ];
   },
 );

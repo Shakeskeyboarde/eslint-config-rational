@@ -14,9 +14,6 @@ export default configFactory<{
           version: 'detect',
         },
       },
-      parserOptions: {
-        ecmaVersion: 'latest',
-      },
       rules: {
         'react/prop-types': 'off',
         'react/no-unescaped-entities': ['warn', { forbid: ['>', '}'] }],
