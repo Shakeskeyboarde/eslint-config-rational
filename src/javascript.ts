@@ -1,6 +1,5 @@
 import base from './base.js';
 import type { ConfigFactory } from './config-factory.js';
-import { jsExtensions } from './constants.js';
 import import_ from './import.js';
 import simpleImportSort from './simple-import-sort.js';
 import unicorn from './unicorn.js';
@@ -19,15 +18,6 @@ const factory: ConfigFactory<{
 
     {
       files,
-      settings: {
-        // XXX: Work around for https://github.com/import-js/eslint-plugin-import/issues/2556#issuecomment-1419518561
-        'import/parsers': {
-          espree: jsExtensions,
-        },
-        'import/resolver': {
-          node: true,
-        },
-      },
       languageOptions: {
         parserOptions: {
           ecmaVersion: 'latest',

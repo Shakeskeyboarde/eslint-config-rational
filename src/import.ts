@@ -1,5 +1,6 @@
 import compat from './compat.js';
 import type { ConfigFactory } from './config-factory.js';
+import { jsExtensions } from './constants.js';
 
 const factory: ConfigFactory<{
   readonly files: readonly string[];
@@ -15,6 +16,15 @@ const factory: ConfigFactory<{
 
     {
       files,
+      settings: {
+        // XXX: Work around for https://github.com/import-js/eslint-plugin-import/issues/2556#issuecomment-1419518561
+        'import/parsers': {
+          espree: jsExtensions,
+        },
+        'import/resolver': {
+          node: true,
+        },
+      },
       rules: {
         'import/extensions': ['error', 'never', { ignorePackages: true, pattern: { js: 'always' } }],
         'import/no-cycle': 'error',

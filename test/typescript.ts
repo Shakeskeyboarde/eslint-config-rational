@@ -1,3 +1,5 @@
+import {} from 'eslint-config-prettier';
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const props = '';
 const prop = '';
