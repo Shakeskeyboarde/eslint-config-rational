@@ -1,11 +1,9 @@
-import compat from './compat.js';
-import type { ConfigFactory } from './config-factory.js';
+import compat from './utils/compat.js';
+import { configFactory } from './utils/config-factory.js';
 
-const factory: ConfigFactory<{
-  readonly extensions: readonly string[];
-}> = ({ extensions }) => {
-  const files = extensions.map((ext) => `**/*${ext}`);
-
+export default configFactory<{
+  readonly files: readonly string[];
+}>(({ files }) => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
     ...compat({
@@ -20,6 +18,4 @@ const factory: ConfigFactory<{
       },
     },
   ];
-};
-
-export default factory;
+});

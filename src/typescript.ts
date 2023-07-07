@@ -1,17 +1,14 @@
 import base from './base.js';
-import compat from './compat.js';
-import type { ConfigFactory } from './config-factory.js';
-import { tsExtensions } from './constants.js';
 import import_ from './import.js';
 import simpleImportSort from './simple-import-sort.js';
 import unicorn from './unicorn.js';
+import compat from './utils/compat.js';
+import { configFactory } from './utils/config-factory.js';
 
-const factory: ConfigFactory<{
-  readonly extensions: readonly string[];
+export default configFactory<{
+  readonly files: readonly string[];
   readonly relaxedFiles: readonly string[];
-}> = ({ extensions, relaxedFiles }) => {
-  const files = extensions.map((ext) => `**/*${ext}`);
-
+}>(({ files, relaxedFiles }) => {
   return [
     ...base({ files, relaxedFiles }),
     ...import_({ files, relaxedFiles }),
@@ -31,15 +28,6 @@ const factory: ConfigFactory<{
 
     {
       files,
-      settings: {
-        // XXX: Work around for https://github.com/import-js/eslint-plugin-import/issues/2556#issuecomment-1419518561
-        'import/parsers': {
-          '@typescript-eslint/parser': tsExtensions,
-        },
-        'import/resolver': {
-          typescript: true,
-        },
-      },
       languageOptions: {
         parserOptions: {
           ecmaVersion: 'latest',
@@ -75,6 +63,7 @@ const factory: ConfigFactory<{
         '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
         '@typescript-eslint/return-await': ['warn', 'always'],
         '@typescript-eslint/switch-exhaustiveness-check': 'warn',
+        '@typescript-eslint/unbound-method': 'off',
       },
     },
 
@@ -82,10 +71,15 @@ const factory: ConfigFactory<{
       files: relaxedFiles,
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
       },
     },
   ];
-};
-
-export default factory;
+});

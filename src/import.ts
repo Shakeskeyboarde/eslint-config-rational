@@ -1,11 +1,11 @@
-import compat from './compat.js';
-import type { ConfigFactory } from './config-factory.js';
-import { jsExtensions } from './constants.js';
+import compat from './utils/compat.js';
+import { configFactory } from './utils/config-factory.js';
+import { jsExtensions, tsExtensions } from './utils/constants.js';
 
-const factory: ConfigFactory<{
+export default configFactory<{
   readonly files: readonly string[];
   readonly relaxedFiles: readonly string[];
-}> = ({ files, relaxedFiles }) => {
+}>(({ files, relaxedFiles }) => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
     ...compat({
@@ -20,9 +20,11 @@ const factory: ConfigFactory<{
         // XXX: Work around for https://github.com/import-js/eslint-plugin-import/issues/2556#issuecomment-1419518561
         'import/parsers': {
           espree: jsExtensions,
+          '@typescript-eslint/parser': tsExtensions,
         },
         'import/resolver': {
           node: true,
+          typescript: true,
         },
       },
       rules: {
@@ -42,6 +44,4 @@ const factory: ConfigFactory<{
       },
     },
   ];
-};
-
-export default factory;
+});

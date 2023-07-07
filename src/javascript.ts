@@ -1,15 +1,13 @@
 import base from './base.js';
-import type { ConfigFactory } from './config-factory.js';
 import import_ from './import.js';
 import simpleImportSort from './simple-import-sort.js';
 import unicorn from './unicorn.js';
+import { configFactory } from './utils/config-factory.js';
 
-const factory: ConfigFactory<{
-  readonly extensions: readonly string[];
+export default configFactory<{
+  readonly files: readonly string[];
   readonly relaxedFiles: readonly string[];
-}> = ({ extensions, relaxedFiles }) => {
-  const files = extensions.map((ext) => `**/*${ext}`);
-
+}>(({ files, relaxedFiles }) => {
   return [
     ...base({ files, relaxedFiles }),
     ...import_({ files, relaxedFiles }),
@@ -25,6 +23,4 @@ const factory: ConfigFactory<{
       },
     },
   ];
-};
-
-export default factory;
+});

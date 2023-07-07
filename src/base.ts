@@ -1,11 +1,11 @@
 import eslint from '@eslint/js';
 
-import type { ConfigFactory } from './config-factory.js';
+import { configFactory } from './utils/config-factory.js';
 
-const factory: ConfigFactory<{
+export default configFactory<{
   readonly files: readonly string[];
   readonly relaxedFiles: readonly string[];
-}> = ({ files, relaxedFiles }) => {
+}>(({ files, relaxedFiles }) => {
   return [
     {
       files,
@@ -47,9 +47,8 @@ const factory: ConfigFactory<{
       files: relaxedFiles,
       rules: {
         'max-lines': 'off',
+        'no-empty': 'off',
       },
     },
   ];
-};
-
-export default factory;
+});

@@ -1,10 +1,10 @@
 import unicorn from 'eslint-plugin-unicorn';
 
-import type { ConfigFactory } from './config-factory.js';
+import { configFactory } from './utils/config-factory.js';
 
-const factory: ConfigFactory<{
+export default configFactory<{
   readonly files: readonly string[];
-}> = ({ files }) => {
+}>(({ files }) => {
   return [
     {
       files,
@@ -37,6 +37,4 @@ const factory: ConfigFactory<{
       },
     },
   ];
-};
-
-export default factory;
+});
