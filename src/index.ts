@@ -13,12 +13,22 @@ export default configFactory<{
   tsExtensions?: readonly string[];
   jsxExtensions?: readonly string[];
   relaxedFiles?: readonly string[];
+  enableImports?: boolean;
+  enableUnicorn?: boolean;
+  enableTypescript?: boolean;
+  enableReact?: boolean;
+  enablePrettier?: boolean;
 }>(
   ({
     jsExtensions = constants.jsExtensions,
     tsExtensions = constants.tsExtensions,
     jsxExtensions = constants.jsxExtensions,
     relaxedFiles = constants.relaxedFiles,
+    enableImports = false,
+    enableUnicorn = false,
+    enableTypescript = false,
+    enableReact = false,
+    enablePrettier = false,
   } = {}) => {
     const allFiles = getExtensionsGlob([...jsExtensions, ...tsExtensions, ...jsxExtensions]);
     const tsFiles = getExtensionsGlob(tsExtensions);
@@ -26,11 +36,11 @@ export default configFactory<{
 
     return [
       ...base({ files: allFiles, relaxedFiles }),
-      ...imports({ files: allFiles, relaxedFiles }),
-      ...unicorn({ files: allFiles }),
-      ...typescript({ files: tsFiles, relaxedFiles }),
-      ...react({ files: jsxFiles }),
-      ...prettier({ files: allFiles }),
+      ...(enableImports ? imports({ files: allFiles, relaxedFiles }) : []),
+      ...(enableUnicorn ? unicorn({ files: allFiles }) : []),
+      ...(enableTypescript ? typescript({ files: tsFiles, relaxedFiles }) : []),
+      ...(enableReact ? react({ files: jsxFiles }) : []),
+      ...(enablePrettier ? prettier({ files: allFiles }) : []),
       {
         languageOptions: {
           parserOptions: {

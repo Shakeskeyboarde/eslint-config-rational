@@ -26,7 +26,13 @@ import rational from 'eslint-config-rational';
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   // Returns an array of ESLint FlatConfig objects.
-  ...rational(),
+  ...rational({
+    enableImports: true,
+    enableUnicorn: true,
+    enableTypescript: true,
+    enableReact: true,
+    enablePrettier: true,
+  }),
 ];
 ```
 
@@ -38,3 +44,8 @@ The `rational(options?)` configuration factory accepts the following options.
 - `tsExtensions`: Array of file extensions to lint as TypeScript. Defaults to `['.ts', '.cts', '.mts', '.tsx']`.
 - `jsxExtensions`: Array of file extensions to lint as JSX. Defaults to `['.jsx', '.tsx']`.
 - `relaxedFiles`: Array of file paths to lint with relaxed rules. Defaults to `['**/*.test.*', '**/*.spec.*', '**/*.config.*', '**/*.setup.*', '**/.*rc.*', '**/*.story.*', '**/__*', '**/__*/**', '**/.*', '**/.*/**']`.
+- `enableImports`: Enable import rules. Defaults to `false`.
+- `enableUnicorn`: Enable unicorn rules. Defaults to `false`.
+- `enableTypescript`: Enable typescript rules. Defaults to `false`.
+- `enableReact`: Enable react rules. Defaults to `false`.
+- `enablePrettier`: Enable prettier rules. Defaults to `false`.
