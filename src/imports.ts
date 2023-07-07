@@ -1,3 +1,5 @@
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+
 import compat from './utils/compat.js';
 import { configFactory } from './utils/config-factory.js';
 import { jsExtensions, tsExtensions } from './utils/constants.js';
@@ -10,12 +12,7 @@ export default configFactory<{
     // TODO: Update this to flat configuration compatible version when released.
     ...compat({
       files,
-      plugins: ['import'],
       extends: ['plugin:import/recommended'],
-    }),
-
-    {
-      files,
       settings: {
         // XXX: Work around for https://github.com/import-js/eslint-plugin-import/issues/2556#issuecomment-1419518561
         'import/parsers': {
@@ -33,6 +30,16 @@ export default configFactory<{
         'import/no-extraneous-dependencies': ['warn', { devDependencies: false }],
         'import/no-self-import': 'error',
         'import/no-unresolved': 'error',
+      },
+    }),
+
+    {
+      plugins: {
+        'simple-import-sort': simpleImportSort,
+      },
+      rules: {
+        'simple-import-sort/exports': 'warn',
+        'simple-import-sort/imports': 'warn',
       },
     },
 

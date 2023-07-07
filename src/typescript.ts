@@ -1,7 +1,3 @@
-import base from './base.js';
-import import_ from './import.js';
-import simpleImportSort from './simple-import-sort.js';
-import unicorn from './unicorn.js';
 import compat from './utils/compat.js';
 import { configFactory } from './utils/config-factory.js';
 
@@ -10,33 +6,22 @@ export default configFactory<{
   readonly relaxedFiles: readonly string[];
 }>(({ files, relaxedFiles }) => {
   return [
-    ...base({ files, relaxedFiles }),
-    ...import_({ files, relaxedFiles }),
-    ...simpleImportSort({ files }),
-    ...unicorn({ files }),
-
     // TODO: Update this to flat configuration compatible version when released.
     ...compat({
       files,
-      plugins: ['@typescript-eslint'],
       extends: [
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
-    }),
-
-    {
-      files,
-      languageOptions: {
-        parserOptions: {
-          ecmaVersion: 'latest',
-          sourceType: 'module',
-          project: './tsconfig.json',
-        },
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: './tsconfig.json',
       },
       rules: {
         'no-shadow': 'off',
+        'no-undef': 'off',
         'no-unused-vars': 'off',
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
@@ -62,10 +47,11 @@ export default configFactory<{
         '@typescript-eslint/prefer-reduce-type-parameter': 'warn',
         '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
         '@typescript-eslint/return-await': ['warn', 'always'],
+        '@typescript-eslint/require-await': 'off',
         '@typescript-eslint/switch-exhaustiveness-check': 'warn',
         '@typescript-eslint/unbound-method': 'off',
       },
-    },
+    }),
 
     {
       files: relaxedFiles,
