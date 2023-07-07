@@ -16,4 +16,10 @@ const ref = '';
 //   ref;
 // };
 
+// export const _foo = '';
+
+// function foo(): void {
+//   //
+// }
+
 export {};
