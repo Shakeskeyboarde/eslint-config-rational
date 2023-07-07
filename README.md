@@ -21,6 +21,8 @@ npm i -D eslint-config-rational eslint prettier typescript
 Add the `rational` configuration to your `eslint.config.js` (flat) configuration file.
 
 ```js
+import rational from 'eslint-config-rational';
+
 export default [
   // Returns an array of ESLint FlatConfig objects.
   ...rational(),
