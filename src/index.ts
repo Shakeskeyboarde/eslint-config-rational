@@ -24,11 +24,11 @@ export default configFactory<{
     tsExtensions = constants.tsExtensions,
     jsxExtensions = constants.jsxExtensions,
     relaxedFiles = constants.relaxedFiles,
-    enableImports = false,
-    enableUnicorn = false,
-    enableTypescript = false,
-    enableReact = false,
-    enablePrettier = false,
+    enableUnicorn = true,
+    enableImports = true,
+    enableReact = true,
+    enableTypescript = true,
+    enablePrettier = true,
   } = {}) => {
     const allFiles = getExtensionsGlob([...jsExtensions, ...tsExtensions, ...jsxExtensions]);
     const tsFiles = getExtensionsGlob(tsExtensions);
@@ -36,10 +36,10 @@ export default configFactory<{
 
     return [
       ...base({ files: allFiles, relaxedFiles }),
-      ...(enableImports ? imports({ files: allFiles, relaxedFiles }) : []),
       ...(enableUnicorn ? unicorn({ files: allFiles }) : []),
-      ...(enableTypescript ? typescript({ files: tsFiles, relaxedFiles }) : []),
+      ...(enableImports ? imports({ files: allFiles, relaxedFiles }) : []),
       ...(enableReact ? react({ files: jsxFiles }) : []),
+      ...(enableTypescript ? typescript({ files: tsFiles, relaxedFiles }) : []),
       ...(enablePrettier ? prettier({ files: allFiles }) : []),
       {
         languageOptions: {
