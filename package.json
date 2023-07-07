@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-rational",
-  "version": "3.0.0-flat-config.2",
+  "version": "3.0.0-flat-config.3",
   "description": "Minimal ESLint configurations for reducing version control noise and avoiding common mistakes.",
   "repository": {
     "type": "git",

@@ -23,6 +23,7 @@ Add the `rational` configuration to your `eslint.config.js` (flat) configuration
 ```js
 import rational from 'eslint-config-rational';
 
+/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   // Returns an array of ESLint FlatConfig objects.
   ...rational(),
