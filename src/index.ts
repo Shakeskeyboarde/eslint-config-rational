@@ -25,17 +25,14 @@ export interface Options {
   ignores?: string | readonly string[];
   /**
    * Array of file extensions to lint as JavaScript.
-   * Defaults to `['.js', '.cjs', '.mjs', '.jsx']`.
    */
   jsExtensions?: readonly string[];
   /**
    * Array of file extensions to lint as TypeScript.
-   * Defaults to `['.ts', '.cts', '.mts', '.tsx']`.
    */
   tsExtensions?: readonly string[];
   /**
    * Array of file extensions to lint as JSX.
-   * Defaults to `['.jsx', '.tsx']`.
    */
   jsxExtensions?: readonly string[];
   /**

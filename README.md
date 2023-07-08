@@ -30,7 +30,7 @@ export default rational();
 
 The `rational(options?)` configuration factory accepts the following options.
 
-- `ignores`: Add ESLint global ignores.
+- `ignores`: Add ESLint global ignores. Defaults to `['**/node_modules/', '**/lib/', '**/dist/', '**/out/', '**/coverage/']`.
 - `jsExtensions`: Array of file extensions to lint as JavaScript. Defaults to `['.js', '.cjs', '.mjs', '.jsx']`.
 - `tsExtensions`: Array of file extensions to lint as TypeScript. Defaults to `['.ts', '.cts', '.mts', '.tsx']`.
 - `jsxExtensions`: Array of file extensions to lint as JSX. Defaults to `['.jsx', '.tsx']`.
