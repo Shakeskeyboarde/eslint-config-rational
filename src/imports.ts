@@ -1,7 +1,7 @@
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 import compat from './utils/compat.js';
-import { configFactory } from './utils/config-factory.js';
+import { configFactory } from './utils/config.js';
 import { jsExtensions, tsExtensions } from './utils/constants.js';
 
 export default configFactory<{
@@ -10,7 +10,7 @@ export default configFactory<{
 }>(({ files, relaxedFiles }) => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
-    ...compat({
+    compat({
       files,
       extends: ['plugin:import/recommended'],
       settings: {

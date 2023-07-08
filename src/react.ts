@@ -1,12 +1,12 @@
 import compat from './utils/compat.js';
-import { configFactory } from './utils/config-factory.js';
+import { configFactory } from './utils/config.js';
 
 export default configFactory<{
   readonly files: readonly string[];
 }>(({ files }) => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
-    ...compat({
+    compat({
       files,
       extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'plugin:react-hooks/recommended'],
       settings: {

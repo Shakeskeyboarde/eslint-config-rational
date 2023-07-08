@@ -1,5 +1,5 @@
 import compat from './utils/compat.js';
-import { configFactory } from './utils/config-factory.js';
+import { configFactory } from './utils/config.js';
 
 export default configFactory<{
   readonly files: readonly string[];
@@ -7,7 +7,7 @@ export default configFactory<{
 }>(({ files, relaxedFiles }) => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
-    ...compat({
+    compat({
       files,
       extends: [
         'plugin:import/typescript',

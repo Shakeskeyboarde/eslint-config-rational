@@ -1,6 +1,6 @@
 import unicorn from 'eslint-plugin-unicorn';
 
-import { configFactory } from './utils/config-factory.js';
+import { configFactory } from './utils/config.js';
 
 export default configFactory<{
   readonly files: readonly string[];

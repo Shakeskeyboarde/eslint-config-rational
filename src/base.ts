@@ -1,16 +1,13 @@
 import eslint from '@eslint/js';
 
-import { configFactory } from './utils/config-factory.js';
+import { configFactory } from './utils/config.js';
 
 export default configFactory<{
   readonly files: readonly string[];
   readonly relaxedFiles: readonly string[];
 }>(({ files, relaxedFiles }) => {
   return [
-    {
-      files,
-      ...eslint.configs.recommended,
-    },
+    Object.assign({ files }, eslint.configs.recommended),
 
     {
       files,
@@ -37,7 +34,7 @@ export default configFactory<{
           },
         ],
         'no-shadow': 'error',
-        'no-unused-vars': ['warn', { varsIgnorePattern: '^_.*ignore.*', args: 'after-used' }],
+        'no-unused-vars': ['warn', { args: 'after-used' }],
         'no-useless-rename': 'warn',
         'valid-typeof': 'error',
       },
