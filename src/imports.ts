@@ -2,7 +2,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 import compat from './utils/compat.js';
 import { configFactory } from './utils/config.js';
-import { jsExtensions, tsExtensions } from './utils/constants.js';
+import { defaultJsExtensions, defaultTsExtensions } from './utils/defaults.js';
 
 export default configFactory<{
   readonly files: readonly string[];
@@ -16,8 +16,8 @@ export default configFactory<{
       settings: {
         // XXX: Work around for https://github.com/import-js/eslint-plugin-import/issues/2556#issuecomment-1419518561
         'import/parsers': {
-          espree: jsExtensions,
-          '@typescript-eslint/parser': tsExtensions,
+          espree: defaultJsExtensions,
+          '@typescript-eslint/parser': defaultTsExtensions,
         },
         'import/resolver': {
           node: true,

@@ -5,11 +5,18 @@ import react from './react.js';
 import typescript from './typescript.js';
 import unicorn from './unicorn.js';
 import { configFactory, type NestedConfigs } from './utils/config.js';
-import * as constants from './utils/constants.js';
+import {
+  defaultIgnores,
+  defaultJsExtensions,
+  defaultJsxExtensions,
+  defaultRelaxedFiles,
+  defaultTsExtensions,
+} from './utils/defaults.js';
 import { getExtensionsGlob } from './utils/get-extensions-glob.js';
 import { isArray } from './utils/is-array.js';
 
 export type { NestedConfigs, RelaxedFlatConfig } from './utils/config.js';
+export * from './utils/defaults.js';
 
 export interface Options {
   /**
@@ -67,11 +74,11 @@ export interface Options {
 
 export default configFactory<Options>(
   ({
-    ignores = constants.ignores,
-    jsExtensions = constants.jsExtensions,
-    tsExtensions = constants.tsExtensions,
-    jsxExtensions = constants.jsxExtensions,
-    relaxedFiles = constants.relaxedFiles,
+    ignores = defaultIgnores,
+    jsExtensions = defaultJsExtensions,
+    tsExtensions = defaultTsExtensions,
+    jsxExtensions = defaultJsxExtensions,
+    relaxedFiles = defaultRelaxedFiles,
     enableUnicorn = true,
     enableImports = true,
     enableReact = true,
