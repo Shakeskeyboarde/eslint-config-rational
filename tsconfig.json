@@ -13,6 +13,6 @@
     "allowJs": true,
     "noEmit": true
   },
-  "include": ["**/*"],
-  "exclude": [".vscode", "node_modules", "out", "docs"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [".*", "node_modules", "lib", "dist", "out", "coverage"]
 }

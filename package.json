@@ -15,7 +15,7 @@
   "author": "Chris Ackerman <chris@topher.land>",
   "license": "Unlicense",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "rm -rf lib && tsc -p tsconfig.build.json",
     "test": "npm run build && eslint test --max-warnings=0",
     "prepublishOnly": "npm test",
     "modernize": "npx npm-check-updates@latest -i --format group"
