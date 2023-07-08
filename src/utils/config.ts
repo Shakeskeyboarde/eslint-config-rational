@@ -31,6 +31,8 @@ const flatten = (
 
 export const configFactory = <T extends {}>(callback: ConfigCallback<T>): ConfigFactory<T> => {
   return (...args) => {
-    return flatten(callback(...args)).filter((value): value is Linter.FlatConfig => Boolean(value));
+    return flatten(callback(...args))
+      .filter((value): value is Linter.FlatConfig => Boolean(value))
+      .filter((value) => !value.files || value.files.length > 0);
   };
 };

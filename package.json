@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-rational",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Minimal ESLint configurations for reducing version control noise and avoiding common mistakes.",
   "repository": {
     "type": "git",
@@ -15,9 +15,9 @@
   "author": "Chris Ackerman <chris@topher.land>",
   "license": "Unlicense",
   "scripts": {
-    "test": "eslint test --max-warnings=0",
     "build": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "npm test && npm run build",
+    "test": "npm run build && eslint test --max-warnings=0",
+    "prepublishOnly": "npm test",
     "modernize": "npx npm-check-updates@latest -i --format group"
   },
   "type": "module",
