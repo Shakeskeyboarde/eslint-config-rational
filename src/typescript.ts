@@ -45,7 +45,7 @@ export default configFactory<{
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
-        '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+        '@typescript-eslint/no-unused-vars': ['warn', { args: 'after-used' }],
         '@typescript-eslint/prefer-for-of': 'warn',
         '@typescript-eslint/prefer-reduce-type-parameter': 'warn',
         '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
@@ -63,6 +63,7 @@ export default configFactory<{
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
       },
     },
   ];

@@ -3,6 +3,7 @@ export const defaultJsExtensions = ['.js', '.cjs', '.mjs', '.jsx'] as const sati
 export const defaultTsExtensions = ['.ts', '.cts', '.mts', '.tsx'] as const satisfies readonly `.${string}`[];
 export const defaultJsxExtensions = ['.jsx', '.tsx'] as const satisfies readonly `.${string}`[];
 export const defaultRelaxedFiles = [
+  '**/*example*.*',
   '**/*.test.*',
   '**/*.spec.*',
   '**/*.config.*',

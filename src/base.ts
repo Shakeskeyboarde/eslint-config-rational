@@ -45,6 +45,7 @@ export default configFactory<{
       rules: {
         'max-lines': 'off',
         'no-empty': 'off',
+        'no-unused-vars': 'off',
       },
     },
   ];
