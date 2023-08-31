@@ -1,6 +1,7 @@
+/* eslint-disable multiline-comment-style */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export {};
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const foo = '';
 
 // export const Foo = ({ name }) => {
