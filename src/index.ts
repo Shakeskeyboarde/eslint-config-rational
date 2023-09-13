@@ -2,6 +2,7 @@ import base from './base.js';
 import imports from './imports.js';
 import prettier from './prettier.js';
 import react from './react.js';
+import regexp from './regexp.js';
 import typescript from './typescript.js';
 import unicorn from './unicorn.js';
 import { configFactory, type NestedConfigs } from './utils/config.js';
@@ -60,6 +61,10 @@ export interface Options {
    */
   enablePrettier?: boolean;
   /**
+   * Enable RegExp rules. Defaults to `true`.
+   */
+  enableRegExp?: boolean;
+  /**
    * One or more ESLint configurations to extend (nested arrays allowed).
    */
   extend?: NestedConfigs;
@@ -81,6 +86,7 @@ export default configFactory<Options>(
     enableReact = true,
     enableTypescript = true,
     enablePrettier = true,
+    enableRegExp = true,
     extend,
     override,
   } = {}) => {
@@ -94,6 +100,7 @@ export default configFactory<Options>(
       },
       extend,
       base({ files: allFiles, relaxedFiles }),
+      enableRegExp && regexp({ files: allFiles }),
       enableUnicorn && unicorn({ files: allFiles }),
       enableImports && imports({ files: allFiles, relaxedFiles }),
       enableReact && react({ files: jsxFiles }),
