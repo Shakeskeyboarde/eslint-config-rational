@@ -14,7 +14,6 @@ export default configFactory<{
       rules: {
         'func-style': 'warn',
         'max-lines': ['warn', { max: 200, skipBlankLines: true, skipComments: true }],
-        'multiline-comment-style': ['warn'],
         'no-restricted-syntax': [
           'error',
           {
@@ -45,7 +44,6 @@ export default configFactory<{
       files: relaxedFiles,
       rules: {
         'max-lines': 'off',
-        'multiline-comment-style': ['off'],
         'no-empty': 'off',
         'no-unused-vars': 'off',
       },
