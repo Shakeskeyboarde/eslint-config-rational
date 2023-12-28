@@ -1,4 +1,3 @@
-/* eslint-disable multiline-comment-style */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export {};
 
