@@ -37,6 +37,10 @@ export default configFactory<{
             allowConciseArrowFunctionExpressionsStartingWithVoid: true,
           },
         ],
+        '@typescript-eslint/no-base-to-string': [
+          'warn',
+          { ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams', '{}'] },
+        ],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-floating-promises': 'error',
         '@typescript-eslint/no-shadow': 'error',
