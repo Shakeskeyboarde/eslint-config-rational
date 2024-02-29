@@ -1,4 +1,5 @@
 import base from './base.js';
+import etc from './etc.js';
 import imports from './imports.js';
 import prettier from './prettier.js';
 import react from './react.js';
@@ -53,6 +54,10 @@ export interface Options {
    */
   enableTypescript?: boolean;
   /**
+   * Enable etc rules. Defaults to `true`.
+   */
+  enableEtc?: boolean;
+  /**
    * Enable React rules. Defaults to `true`.
    */
   enableReact?: boolean;
@@ -85,6 +90,7 @@ export default configFactory<Options>(
     enableImports = true,
     enableReact = true,
     enableTypescript = true,
+    enableEtc = true,
     enablePrettier = true,
     enableRegExp = true,
     extend,
@@ -105,6 +111,7 @@ export default configFactory<Options>(
       enableImports && imports({ files: allFiles, relaxedFiles }),
       enableReact && react({ files: jsxFiles }),
       enableTypescript && typescript({ files: tsFiles, relaxedFiles }),
+      enableEtc && etc({ files: tsFiles }),
       enablePrettier && prettier({ files: allFiles }),
       override,
       {
