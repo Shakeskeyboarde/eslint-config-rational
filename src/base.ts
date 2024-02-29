@@ -13,7 +13,7 @@ export default configFactory<{
       files,
       rules: {
         'func-style': 'warn',
-        'max-lines': ['warn', { max: 200, skipBlankLines: true, skipComments: true }],
+        'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
         'no-restricted-syntax': [
           'error',
           {
