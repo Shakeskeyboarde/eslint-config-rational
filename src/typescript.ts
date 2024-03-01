@@ -59,6 +59,19 @@ export default configFactory<{
         '@typescript-eslint/require-await': 'off',
         '@typescript-eslint/switch-exhaustiveness-check': 'warn',
         '@typescript-eslint/unbound-method': 'off',
+        'no-restricted-syntax': [
+          'error',
+          {
+            message: 'Promise rejection handler error type must be explicit.',
+            selector:
+              'CallExpression[callee.property.name="catch"] > :first-child > :first-child:not([typeAnnotation])',
+          },
+          {
+            message: 'Promise rejection handler error type must be explicit.',
+            selector:
+              'CallExpression[callee.property.name="then"] > :nth-child(2) > :first-child:not([typeAnnotation])',
+          },
+        ],
       },
     }),
 
