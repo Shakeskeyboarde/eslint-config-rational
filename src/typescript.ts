@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import compat from './utils/compat.js';
 import { configFactory } from './utils/config.js';
 
@@ -15,7 +18,7 @@ export default configFactory<{
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
       parserOptions: {
-        project: './tsconfig.json',
+        project: getTsConfig(),
       },
       rules: {
         'no-shadow': 'off',
@@ -86,3 +89,15 @@ export default configFactory<{
     },
   ];
 });
+
+const getTsConfig = (): string | undefined => {
+  let current = process.cwd();
+
+  do {
+    const filename = path.join(current, 'tsconfig.json');
+
+    if (fs.existsSync(filename)) {
+      return filename;
+    }
+  } while (current !== (current = path.dirname(current)));
+};
