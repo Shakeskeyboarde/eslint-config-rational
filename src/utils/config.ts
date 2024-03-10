@@ -23,9 +23,7 @@ type ConfigCallback<T extends {}> = (...args: {} extends T ? [options?: T] : [op
 
 type ConfigFactory<T extends {} = {}> = (...args: {} extends T ? [options?: T] : [options: T]) => Linter.FlatConfig[];
 
-const flatten = (
-  values: NestedConfigs,
-): (RelaxedFlatConfig | Linter.FlatConfig | null | undefined | false | 0 | 0n | '')[] => {
+const flatten = (values: NestedConfigs): (RelaxedFlatConfig | Linter.FlatConfig | null | undefined | false | 0 | 0n | '')[] => {
   return isArray(values) ? values.flatMap(flatten) : [values];
 };
 

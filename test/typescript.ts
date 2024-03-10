@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {} from 'eslint-config-prettier';
+import {} from 'eslint-plugin-unicorn';
 
 const props = '';
 const prop = '';
@@ -23,5 +23,25 @@ const ref = '';
 // function foo(): void {
 //   //
 // }
+
+const foo = [1, 2];
+const bar = [
+  1,
+  2,
+];
+
+['a'].map((v) => v);
+['a']
+  .map((v) => { return v; })
+  .map((v) => v)
+  .map((v) => v);
+
+for (let i = 0; i < 1; ++i) {
+  i;
+}
+
+const baz = (value: string, a: string): string => {
+  return '';
+};
 
 export {};

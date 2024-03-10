@@ -8,7 +8,6 @@ export default configFactory<{
 }>(({ files, relaxedFiles }) => {
   return [
     Object.assign({ files }, eslint.configs.recommended),
-
     {
       files,
       rules: {

@@ -15,7 +15,7 @@ Minimal ESLint configuration for reducing version control noise and avoiding com
 Install the `eslint-config-rational` package.
 
 ```bash
-npm i -D eslint-config-rational eslint prettier typescript
+npm i -D eslint-config-rational eslint typescript
 ```
 
 Add the `rational` configuration to your `eslint.config.js` (flat) configuration file.
@@ -39,7 +39,7 @@ The `rational(options?)` configuration factory accepts the following options.
 - `enableUnicorn`: Enable unicorn rules. Defaults to `true`.
 - `enableReact`: Enable react rules. Defaults to `true`.
 - `enableTypescript`: Enable typescript rules. Defaults to `true`.
-- `enablePrettier`: Enable prettier rules. Defaults to `true`.
+- `enableStylistic`: Enable ESLint Stylistic rules. Defaults to `true`.
 - `extend`: One or more ESLint configurations to extend (nested arrays allowed).
 - `override`: One or more ESLint override configurations (nested arrays allowed).
 
@@ -66,7 +66,7 @@ export default rational({
   enableUnicorn: true,
   enableReact: true,
   enableTypescript: true,
-  enablePrettier: true,
+  enableStylistic: true,
   extend: [
     // ESLint configuration or (nested) array of configurations which
     // will precede the rational configuration.

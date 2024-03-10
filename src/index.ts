@@ -1,8 +1,8 @@
 import base from './base.js';
 import imports from './imports.js';
-import prettier from './prettier.js';
 import react from './react.js';
 import regexp from './regexp.js';
+import stylistic from './stylistic.js';
 import typescript from './typescript.js';
 import unicorn from './unicorn.js';
 import { configFactory, type NestedConfigs } from './utils/config.js';
@@ -57,13 +57,13 @@ export interface Options {
    */
   enableReact?: boolean;
   /**
-   * Enable Prettier rules. Defaults to `true`.
-   */
-  enablePrettier?: boolean;
-  /**
    * Enable RegExp rules. Defaults to `true`.
    */
   enableRegExp?: boolean;
+  /**
+   * Enable stylistic rules. Defaults to `true`.
+   */
+  enableStylistic?: boolean;
   /**
    * One or more ESLint configurations to extend (nested arrays allowed).
    */
@@ -74,47 +74,45 @@ export interface Options {
   override?: NestedConfigs;
 }
 
-export default configFactory<Options>(
-  ({
-    ignores = defaultIgnores,
-    jsExtensions = defaultJsExtensions,
-    tsExtensions = defaultTsExtensions,
-    jsxExtensions = defaultJsxExtensions,
-    relaxedFiles = defaultRelaxedFiles,
-    enableUnicorn = true,
-    enableImports = true,
-    enableReact = true,
-    enableTypescript = true,
-    enablePrettier = true,
-    enableRegExp = true,
-    extend,
-    override,
-  } = {}) => {
-    const allFiles = getExtensionsGlob([...jsExtensions, ...tsExtensions, ...jsxExtensions]);
-    const tsFiles = getExtensionsGlob(tsExtensions);
-    const jsxFiles = getExtensionsGlob(jsxExtensions);
+export default configFactory<Options>(({
+  ignores = defaultIgnores,
+  jsExtensions = defaultJsExtensions,
+  tsExtensions = defaultTsExtensions,
+  jsxExtensions = defaultJsxExtensions,
+  relaxedFiles = defaultRelaxedFiles,
+  enableUnicorn = true,
+  enableImports = true,
+  enableReact = true,
+  enableTypescript = true,
+  enableRegExp = true,
+  enableStylistic = true,
+  extend,
+  override,
+} = {}) => {
+  const allFiles = getExtensionsGlob([...jsExtensions, ...tsExtensions, ...jsxExtensions]);
+  const tsFiles = getExtensionsGlob(tsExtensions);
+  const jsxFiles = getExtensionsGlob(jsxExtensions);
 
-    return [
-      ignores?.length && {
-        ignores: isArray(ignores) ? ignores : [ignores],
-      },
-      extend,
-      base({ files: allFiles, relaxedFiles }),
-      enableRegExp && regexp({ files: allFiles }),
-      enableUnicorn && unicorn({ files: allFiles }),
-      enableImports && imports({ files: allFiles, relaxedFiles }),
-      enableReact && react({ files: jsxFiles }),
-      enableTypescript && typescript({ files: tsFiles, relaxedFiles }),
-      enablePrettier && prettier({ files: allFiles }),
-      override,
-      {
-        languageOptions: {
-          parserOptions: {
-            sourceType: 'module',
-            ecmaVersion: 'latest',
-          },
+  return [
+    ignores?.length && {
+      ignores: isArray(ignores) ? ignores : [ignores],
+    },
+    extend,
+    base({ files: allFiles, relaxedFiles }),
+    enableRegExp && regexp({ files: allFiles }),
+    enableUnicorn && unicorn({ files: allFiles }),
+    enableImports && imports({ files: allFiles, relaxedFiles }),
+    enableReact && react({ files: jsxFiles }),
+    enableTypescript && typescript({ files: tsFiles, relaxedFiles }),
+    enableStylistic && stylistic({ files: allFiles }),
+    override,
+    {
+      languageOptions: {
+        parserOptions: {
+          sourceType: 'module',
+          ecmaVersion: 'latest',
         },
       },
-    ];
-  },
-);
+    },
+  ];
+});

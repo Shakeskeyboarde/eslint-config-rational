@@ -25,7 +25,10 @@ export default configFactory<{
         },
       },
       rules: {
-        'import/extensions': ['error', 'never', { ignorePackages: true, pattern: { js: 'always' } }],
+        'import/extensions': ['error', 'never', {
+          ignorePackages: true,
+          pattern: { js: 'always' },
+        }],
         'import/no-cycle': 'error',
         'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
         'import/no-self-import': 'error',
