@@ -11,13 +11,12 @@ export default configFactory<{
     {
       files,
       rules: {
-        // '@stylistic/array-element-newline': ['warn', 'consistent'],
         '@stylistic/array-bracket-newline': ['warn', 'consistent'],
         '@stylistic/arrow-parens': ['warn', 'always'],
         '@stylistic/function-call-spacing': ['warn'],
         '@stylistic/function-call-argument-newline': ['warn', 'consistent'],
         '@stylistic/function-paren-newline': ['warn', 'multiline-arguments'],
-        '@stylistic/generator-star-spacing': ['warn'],
+        '@stylistic/generator-star-spacing': ['warn', 'before'],
         '@stylistic/implicit-arrow-linebreak': ['warn'],
         '@stylistic/indent': ['error', 2],
         '@stylistic/indent-binary-ops': ['error', 2],
@@ -36,6 +35,7 @@ export default configFactory<{
         '@stylistic/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
         '@stylistic/quote-props': ['warn', 'as-needed'],
         '@stylistic/quotes': ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+        '@stylistic/yield-star-spacing': ['warn', 'after'],
       },
     },
   ];
