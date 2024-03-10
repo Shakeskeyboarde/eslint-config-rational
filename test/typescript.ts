@@ -44,4 +44,8 @@ const baz = (value: string, a: string): string => {
   return '';
 };
 
+const single = 'a';
+const double = "a's";
+const template = `a`;
+
 export {};

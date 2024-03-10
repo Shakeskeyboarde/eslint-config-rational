@@ -32,6 +32,7 @@ export default configFactory<{
         '@stylistic/object-curly-newline': ['warn', { multiline: true, consistent: true }],
         '@stylistic/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
         '@stylistic/quote-props': ['warn', 'as-needed'],
+        '@stylistic/quotes': ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
       },
     },
   ];
