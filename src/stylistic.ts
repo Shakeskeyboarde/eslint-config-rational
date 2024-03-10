@@ -16,7 +16,7 @@ export default configFactory<{
         '@stylistic/arrow-parens': ['warn', 'always'],
         '@stylistic/function-call-spacing': ['warn'],
         '@stylistic/function-call-argument-newline': ['warn', 'consistent'],
-        '@stylistic/function-paren-newline': ['warn'],
+        '@stylistic/function-paren-newline': ['warn', 'multiline-arguments'],
         '@stylistic/generator-star-spacing': ['warn'],
         '@stylistic/implicit-arrow-linebreak': ['warn'],
         '@stylistic/jsx-child-element-spacing': ['warn'],
