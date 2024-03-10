@@ -19,10 +19,13 @@ export default configFactory<{
         '@stylistic/function-paren-newline': ['warn', 'multiline-arguments'],
         '@stylistic/generator-star-spacing': ['warn'],
         '@stylistic/implicit-arrow-linebreak': ['warn'],
+        '@stylistic/indent': ['error', 2],
+        '@stylistic/indent-binary-ops': ['error', 2],
         '@stylistic/jsx-child-element-spacing': ['warn'],
         '@stylistic/linebreak-style': ['warn', 'unix'],
         '@stylistic/max-len': ['warn', {
           code: 120,
+          tabWidth: 2,
           ignoreUrls: true,
           ignoreStrings: true,
           ignoreTemplateLiterals: true,
