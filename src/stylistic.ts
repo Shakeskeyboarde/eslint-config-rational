@@ -11,7 +11,7 @@ export default configFactory<{
     {
       files,
       rules: {
-        '@stylistic/array-element-newline': ['warn', 'consistent'],
+        // '@stylistic/array-element-newline': ['warn', 'consistent'],
         '@stylistic/array-bracket-newline': ['warn', 'consistent'],
         '@stylistic/arrow-parens': ['warn', 'always'],
         '@stylistic/function-call-spacing': ['warn'],
