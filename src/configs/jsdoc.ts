@@ -28,7 +28,7 @@ export const jsdoc = createConfigFactory<{
           contexts: [
           // Exported JS things.
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):matches([declaration.type="VariableDeclaration"], [declaration.type="ClassDeclaration"], [declaration.type="FunctionDeclaration"], [declaration.type="ArrowFunctionExpression"])',
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > ClassDeclaration > ClassBody > :matches(PropertyDefinition, MethodDefinition):not([accessibility="private"], [key.type="PrivateIdentifier"])',
+            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > ClassDeclaration > ClassBody > :matches(PropertyDefinition, MethodDefinition:not([value.type="TSEmptyBodyFunctionExpression"] + *), MethodDefinition[value.type="TSEmptyBodyFunctionExpression"]):not([accessibility="private"], [key.type="PrivateIdentifier"])',
             // Exported TS things.
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):matches([declaration.type="TSInterfaceDeclaration"], [declaration.type="TSTypeAliasDeclaration"], [declaration.type="TSEnumDeclaration"])',
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > TSInterfaceDeclaration > TSInterfaceBody > :matches(TSPropertySignature, TSMethodSignature, TSCallSignatureDeclaration)',

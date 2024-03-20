@@ -95,7 +95,15 @@ export class Baz {
   }
 
   /** */
+  a(): void;
+  /** */
+  a(): void;
   a(): void {
+    //
+  }
+
+  /** */
+  abc(): void {
     //
   }
 
