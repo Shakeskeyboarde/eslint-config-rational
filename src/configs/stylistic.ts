@@ -1,13 +1,16 @@
-import stylistic from '@stylistic/eslint-plugin';
+import stylisticPlugin from '@stylistic/eslint-plugin';
 
-import { configFactory } from './utils/config.js';
+import { createConfigFactory, type NestedConfigs } from '../config.js';
 
-export default configFactory<{
-  readonly files: readonly string[];
-}>(({ files }) => {
+/**
+ * ESLint configuration for `@stylistic/eslint-plugin`.
+ */
+export const stylistic = createConfigFactory<{
+  files: string[];
+}>(({ files }): NestedConfigs => {
   return [
-    { files, ...stylistic.configs['disable-legacy'] },
-    { files, ...stylistic.configs.customize({ flat: true, semi: true }) },
+    { files, ...stylisticPlugin.configs['disable-legacy'] },
+    { files, ...stylisticPlugin.configs.customize({ flat: true, semi: true }) },
     {
       files,
       rules: {

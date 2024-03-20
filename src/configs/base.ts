@@ -1,11 +1,14 @@
 import eslint from '@eslint/js';
 
-import { configFactory } from './utils/config.js';
+import { createConfigFactory, type NestedConfigs } from '../config.js';
 
-export default configFactory<{
-  readonly files: readonly string[];
-  readonly relaxedFiles: readonly string[];
-}>(({ files, relaxedFiles }) => {
+/**
+ * Base ESLint configuration.
+ */
+export const base = createConfigFactory<{
+  files: string[];
+  relaxedFiles: string[];
+}>(({ files, relaxedFiles }): NestedConfigs => {
   return [
     Object.assign({ files }, eslint.configs.recommended),
     {

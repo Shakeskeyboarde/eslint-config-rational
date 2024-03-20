@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {} from 'eslint-plugin-unicorn';
 
@@ -50,11 +51,106 @@ const abc = (
   return '';
 };
 
-type Foo = true
+/** */
+export type Foo = true
   | false;
 
 const single = 'a';
 const double = "a's";
 const template = `a`;
 
+const b = {} as Bar;
+b;
+b();
+
+/** */
+export interface Bar {
+  /** */
+  (): void;
+  /** */
+  foo(): string;
+  /** */
+  bar: string;
+  /** */
+  get baz(): string;
+  /** */
+  set baz(value: string);
+}
+
+/** */
+export class Baz {
+  #a = '';
+  #b(): void {
+    //
+  }
+
+  /** */
+  constructor() {
+    //
+  }
+
+  /** */
+  a(): void {
+    //
+  }
+
+  private b(): void {
+    //
+  }
+
+  /** */
+  c = '';
+
+  private d = '';
+
+  /** */
+  get e(): string {
+    return '';
+  }
+
+  /** */
+  set e(value: string) {
+    //
+  }
+
+  private get f(): string {
+    return '';
+  }
+
+  private set f(value: string) {
+    //
+  }
+}
+
+// export default Baz;
+// export default '';
+
+/** */
+export function sdf(): void {
+  //
+}
+
+// /** */
+// export default (): void => {
+//   //
+// };
+
+/** */
+export const efg = (): void => {
+  //
+};
+
+/** */
+export type Abc = '';
+
+// /** */
+// export default '';
+
+// /** */
+// export default b();
+
+// /** */
+// export default new Baz();
+
+export { foo };
 export {};

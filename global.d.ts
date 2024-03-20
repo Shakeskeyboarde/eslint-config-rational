@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-jsdoc */
 declare module 'eslint-plugin-unicorn' {
   import type { ESLint } from 'eslint';
   const value: ESLint.Plugin;

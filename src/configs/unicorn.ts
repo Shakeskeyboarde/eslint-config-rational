@@ -1,15 +1,18 @@
-import unicorn from 'eslint-plugin-unicorn';
+import unicornPlugin from 'eslint-plugin-unicorn';
 
-import { configFactory } from './utils/config.js';
+import { createConfigFactory, type NestedConfigs } from '../config.js';
 
-export default configFactory<{
-  readonly files: readonly string[];
-}>(({ files }) => {
+/**
+ * ESLint configuration for `eslint-plugin-unicorn`.
+ */
+export const unicorn = createConfigFactory<{
+  files: string[];
+}>(({ files }): NestedConfigs => {
   return [
     {
       files,
       plugins: {
-        unicorn,
+        unicorn: unicornPlugin,
       },
       rules: {
         'unicorn/consistent-destructuring': 'warn',

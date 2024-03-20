@@ -1,9 +1,12 @@
-import compat from './utils/compat.js';
-import { configFactory } from './utils/config.js';
+import { compat } from '../compat.js';
+import { createConfigFactory, type NestedConfigs } from '../config.js';
 
-export default configFactory<{
-  readonly files: readonly string[];
-}>(({ files }) => {
+/**
+ * ESLint configuration for `eslint-plugin-react`.
+ */
+export const react = createConfigFactory<{
+  files: string[];
+}>(({ files }): NestedConfigs => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
     compat({

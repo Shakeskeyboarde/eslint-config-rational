@@ -1,13 +1,16 @@
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 
-import compat from './utils/compat.js';
-import { configFactory } from './utils/config.js';
-import { defaultJsExtensions, defaultTsExtensions } from './utils/defaults.js';
+import { compat } from '../compat.js';
+import { createConfigFactory, type NestedConfigs } from '../config.js';
+import { defaultJsExtensions, defaultTsExtensions } from '../defaults.js';
 
-export default configFactory<{
-  readonly files: readonly string[];
-  readonly relaxedFiles: readonly string[];
-}>(({ files, relaxedFiles }) => {
+/**
+ * ESLint configuration for imports.
+ */
+export const imports = createConfigFactory<{
+  files: string[];
+  relaxedFiles: string[];
+}>(({ files, relaxedFiles }): NestedConfigs => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
     compat({
@@ -38,7 +41,7 @@ export default configFactory<{
 
     {
       plugins: {
-        'simple-import-sort': simpleImportSort,
+        'simple-import-sort': simpleImportSortPlugin,
       },
       rules: {
         'simple-import-sort/exports': 'warn',

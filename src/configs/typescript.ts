@@ -1,13 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import compat from './utils/compat.js';
-import { configFactory } from './utils/config.js';
+import { compat } from '../compat.js';
+import { createConfigFactory, type NestedConfigs } from '../config.js';
 
-export default configFactory<{
-  readonly files: readonly string[];
-  readonly relaxedFiles: readonly string[];
-}>(({ files, relaxedFiles }) => {
+/**
+ * ESLint configuration for TypeScript.
+ */
+export const typescript = createConfigFactory<{
+  files: string[];
+  relaxedFiles: string[];
+}>(({ files, relaxedFiles }): NestedConfigs => {
   return [
     // TODO: Update this to flat configuration compatible version when released.
     compat({
@@ -77,7 +80,6 @@ export default configFactory<{
         ],
       },
     }),
-
     {
       files: relaxedFiles,
       rules: {
