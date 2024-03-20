@@ -27,10 +27,10 @@ export const jsdoc = createConfigFactory<{
           },
           contexts: [
           // Exported JS things.
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):has(VariableDeclaration, ClassDeclaration, FunctionDeclaration, ArrowFunctionExpression)',
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > ClassDeclaration > ClassBody > :matches(PropertyDefinition, MethodDefinition):not([accessibility="private"]):has(Identifier)',
+            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):matches([declaration.type="VariableDeclaration"], [declaration.type="FunctionDeclaration"], [declaration.type="ArrowFunctionExpression"])',
+            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > ClassDeclaration > ClassBody > :matches(PropertyDefinition, MethodDefinition):not([accessibility="private"], [key.type="PrivateIdentifier"])',
             // Exported TS things.
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):has(TSInterfaceDeclaration, TSTypeAliasDeclaration, TSEnumDeclaration)',
+            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):matches([declaration.type="TSInterfaceDeclaration"], [declaration.type="TSTypeAliasDeclaration"], [declaration.type="TSEnumDeclaration"])',
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > TSInterfaceDeclaration > TSInterfaceBody > :matches(TSPropertySignature, TSMethodSignature, TSCallSignatureDeclaration)',
           ],
           enableFixer: false,
