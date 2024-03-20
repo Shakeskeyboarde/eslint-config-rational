@@ -33,7 +33,7 @@ export const jsdoc = createConfigFactory<{
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):has(TSInterfaceDeclaration, TSTypeAliasDeclaration, TSEnumDeclaration)',
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > TSInterfaceDeclaration > TSInterfaceBody > :matches(TSPropertySignature, TSMethodSignature, TSCallSignatureDeclaration)',
           ],
-          fixerMessage: ' TODO: Add doc comment.',
+          enableFixer: false,
         }],
       },
     },
