@@ -55,6 +55,11 @@ const abc = (
 export type Foo = true
   | false;
 
+/** */
+export enum Values {
+  //
+}
+
 const single = 'a';
 const double = "a's";
 const template = `a`;

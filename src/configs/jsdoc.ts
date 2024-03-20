@@ -30,7 +30,7 @@ export const jsdoc = createConfigFactory<{
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):has(VariableDeclaration, ClassDeclaration, FunctionDeclaration, ArrowFunctionExpression)',
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > ClassDeclaration > ClassBody > :matches(PropertyDefinition, MethodDefinition):not([accessibility="private"]):has(Identifier)',
             // Exported TS things.
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):has(TSInterfaceDeclaration, TSTypeAliasDeclaration)',
+            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):has(TSInterfaceDeclaration, TSTypeAliasDeclaration, TSEnumDeclaration)',
             ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > TSInterfaceDeclaration > TSInterfaceBody > :matches(TSPropertySignature, TSMethodSignature, TSCallSignatureDeclaration)',
           ],
           fixerMessage: ' TODO: Add doc comment.',
