@@ -12,6 +12,7 @@ export const jsdoc = createConfigFactory<{
   return [
     {
       files,
+      ignores: ['*.d.ts'],
       plugins: { jsdoc: jsdocPlugin },
       rules: {
         'jsdoc/require-jsdoc': ['warn', {

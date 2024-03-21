@@ -165,5 +165,17 @@ export type Abc = '';
 // /** */
 // export default new Baz();
 
-export { foo };
+// export { foo };
 export {};
+
+const _foo = '';
+// export const _foo = '';
+// export { _foo };
+// export { foo as _foo };
+// export function _bar(): void {};
+// export { _foo as foo } from './react.js';
+// export { foo as _foo } from './react.js';
+
+// Promise.resolve()
+//   .then(() => {}, (error) => {})
+//   .catch((error) => {});

@@ -5,7 +5,8 @@
  */
 export {};
 
-const foo = '';
+/** */
+export const foo = '';
 
 // export const Foo = ({ name }) => {
 //   return <div name={name} />;

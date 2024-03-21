@@ -11,6 +11,7 @@ import { imports } from './imports.js';
 import { jsdoc } from './jsdoc.js';
 import { react } from './react.js';
 import { regexp } from './regexp.js';
+import { restricted, type RESTRICTED_SYNTAX_RULES } from './restricted.js';
 import { stylistic } from './stylistic.js';
 import { typescript } from './typescript.js';
 import { unicorn } from './unicorn.js';
@@ -68,6 +69,10 @@ export interface Options {
    */
   enableJsdoc?: boolean;
   /**
+   * Enable restricted syntax rules. Defaults to `true`.
+   */
+  enableRestricted?: boolean | Record<keyof typeof RESTRICTED_SYNTAX_RULES, boolean>;
+  /**
    * One or more ESLint configurations to extend (nested arrays allowed).
    */
   extend?: NestedConfigs;
@@ -93,6 +98,7 @@ export const rational = createConfigFactory<Options>(({
   enableRegExp = true,
   enableStylistic = true,
   enableJsdoc = true,
+  enableRestricted = true,
   extend,
   override,
 } = {}): NestedConfigs => {
@@ -113,6 +119,7 @@ export const rational = createConfigFactory<Options>(({
     enableTypescript && typescript({ files: tsFiles, relaxedFiles }),
     enableStylistic && stylistic({ files: allFiles }),
     enableJsdoc && jsdoc({ files: allFiles, relaxedFiles }),
+    enableRestricted && restricted({ files: allFiles, rules: typeof enableRestricted === 'boolean' ? undefined : enableRestricted }),
     override,
     {
       languageOptions: {
