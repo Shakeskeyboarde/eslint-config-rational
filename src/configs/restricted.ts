@@ -43,8 +43,9 @@ export const RESTRICTED_SYNTAX_RULES = {
  */
 export const restricted = createConfigFactory<{
   files: string[];
-  rules: Record<keyof typeof RESTRICTED_SYNTAX_RULES, boolean> | undefined;
-}>(({ files, rules }): NestedConfigs => {
+  enable: Record<keyof typeof RESTRICTED_SYNTAX_RULES, boolean> | boolean | undefined;
+  custom: { message: string; selector: string | string[] }[] | undefined;
+}>(({ files, enable = true, custom = [] }): NestedConfigs => {
   return {
     files,
     ignores: ['**/*.d.ts'],
@@ -52,7 +53,8 @@ export const restricted = createConfigFactory<{
       'no-restricted-syntax': [
         'warn',
         ...Object.entries(RESTRICTED_SYNTAX_RULES)
-          .flatMap(([rule, def]) => (rules?.[rule as keyof typeof rules] !== false ? def : [])),
+          .flatMap(([rule, def]) => enable && (enable?.[rule as keyof typeof enable] !== false ? def : [])),
+        ...custom.map(({ message, selector }) => ({ message, selector: typeof selector === 'string' ? selector : matches(...selector) })),
       ],
     },
   };

@@ -73,6 +73,10 @@ export interface Options {
    */
   enableRestricted?: boolean | Record<keyof typeof RESTRICTED_SYNTAX_RULES, boolean>;
   /**
+   * Custom restricted syntax rules.
+   */
+  customRestricted?: { message: string; selector: string | string[] }[];
+  /**
    * One or more ESLint configurations to extend (nested arrays allowed).
    */
   extend?: NestedConfigs;
@@ -99,6 +103,7 @@ export const rational = createConfigFactory<Options>(({
   enableStylistic = true,
   enableJsdoc = true,
   enableRestricted = true,
+  customRestricted = [],
   extend,
   override,
 } = {}): NestedConfigs => {
@@ -119,7 +124,7 @@ export const rational = createConfigFactory<Options>(({
     enableTypescript && typescript({ files: tsFiles, relaxedFiles }),
     enableStylistic && stylistic({ files: allFiles }),
     enableJsdoc && jsdoc({ files: allFiles, relaxedFiles }),
-    enableRestricted && restricted({ files: allFiles, rules: typeof enableRestricted === 'boolean' ? undefined : enableRestricted }),
+    enableRestricted && restricted({ files: allFiles, enable: enableRestricted, custom: customRestricted }),
     override,
     {
       languageOptions: {
