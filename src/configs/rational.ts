@@ -75,7 +75,7 @@ export interface Options {
   /**
    * Custom restricted syntax rules.
    */
-  customRestricted?: { message: string; selector: string | string[] }[];
+  customRestricted?: { message: string; selector: string | string[]; relaxed?: boolean }[];
   /**
    * One or more ESLint configurations to extend (nested arrays allowed).
    */
