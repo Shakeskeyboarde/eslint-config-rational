@@ -124,7 +124,12 @@ export const rational = createConfigFactory<Options>(({
     enableTypescript && typescript({ files: tsFiles, relaxedFiles }),
     enableStylistic && stylistic({ files: allFiles }),
     enableJsdoc && jsdoc({ files: allFiles, relaxedFiles }),
-    enableRestricted && restricted({ files: allFiles, enable: enableRestricted, custom: customRestricted }),
+    enableRestricted && restricted({
+      files: allFiles,
+      relaxedFiles,
+      enable: enableRestricted,
+      custom: customRestricted,
+    }),
     override,
     {
       languageOptions: {
