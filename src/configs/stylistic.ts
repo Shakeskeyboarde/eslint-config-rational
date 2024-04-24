@@ -33,7 +33,7 @@ export const stylistic = createConfigFactory<{
           ignoreTemplateLiterals: true,
           ignoreRegExpLiterals: true,
         }],
-        '@stylistic/newline-per-chained-call': ['warn', { ignoreChainWithDepth: 1 }],
+        '@stylistic/newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
         '@stylistic/object-curly-newline': ['warn', { multiline: true, consistent: true }],
         '@stylistic/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
         '@stylistic/quote-props': ['warn', 'as-needed'],
