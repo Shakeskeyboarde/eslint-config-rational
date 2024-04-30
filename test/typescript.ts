@@ -165,6 +165,8 @@ export type Abc = '';
 // /** */
 // export default new Baz();
 
+export default foo;
+
 // export { foo };
 export {};
 

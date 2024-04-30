@@ -19,7 +19,7 @@ export const RESTRICTED_SYNTAX_RULES = {
     relaxed: false,
     selector: [
       'ExportNamedDeclaration[specifiers.length>0][source=null]',
-      'ExportDefaultDeclaration[declaration.type="Identifier"]',
+      // 'ExportDefaultDeclaration[declaration.type="Identifier"]',
     ],
   },
   // Typescript specific rules
