@@ -2,6 +2,11 @@ import jsdocPlugin from 'eslint-plugin-jsdoc';
 
 import { createConfigFactory, type NestedConfigs } from '../config.js';
 
+const EXPORT = ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null])';
+const EXPORT_CLASS = `${EXPORT} > ClassDeclaration > ClassBody`;
+const EXPORT_INTERFACE = `${EXPORT} > TSInterfaceDeclaration > TSInterfaceBody`;
+const NOT_PRIVATE = ':not([accessibility="private"], [key.type="PrivateIdentifier"])';
+
 /**
  * ESLint configuration for `eslint-plugin-jsdoc`.
  */
@@ -27,12 +32,19 @@ export const jsdoc = createConfigFactory<{
             MethodDefinition: false,
           },
           contexts: [
-          // Exported JS things.
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):matches([declaration.type="VariableDeclaration"], [declaration.type="ClassDeclaration"], [declaration.type="FunctionDeclaration"], [declaration.type="ArrowFunctionExpression"])',
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > ClassDeclaration > ClassBody > :matches(PropertyDefinition, MethodDefinition:not([value.type="TSEmptyBodyFunctionExpression"] + *), MethodDefinition[value.type="TSEmptyBodyFunctionExpression"]):not([accessibility="private"], [key.type="PrivateIdentifier"])',
-            // Exported TS things.
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]):matches([declaration.type="TSInterfaceDeclaration"], [declaration.type="TSTypeAliasDeclaration"], [declaration.type="TSEnumDeclaration"])',
-            ':matches(ExportDefaultDeclaration, ExportNamedDeclaration[source=null]) > TSInterfaceDeclaration > TSInterfaceBody > :matches(TSPropertySignature, TSMethodSignature, TSCallSignatureDeclaration)',
+            `${EXPORT}[declaration.type="VariableDeclaration"]`,
+            `${EXPORT}[declaration.type="ClassDeclaration"]`,
+            `${EXPORT}[declaration.type="FunctionDeclaration"]`,
+            `${EXPORT}[declaration.type="ArrowFunctionExpression"]`,
+            `${EXPORT}[declaration.type="TSInterfaceDeclaration"]`,
+            `${EXPORT}[declaration.type="TSTypeAliasDeclaration"]`,
+            `${EXPORT}[declaration.type="TSEnumDeclaration"]`,
+            `${EXPORT_CLASS} > PropertyDefinition${NOT_PRIVATE}`,
+            `${EXPORT_CLASS} > MethodDefinition[value.type="TSEmptyBodyFunctionExpression"]${NOT_PRIVATE}`,
+            `${EXPORT_CLASS} > MethodDefinition:not([value.type="TSEmptyBodyFunctionExpression"] + *, [key.name="constructor"])${NOT_PRIVATE}`,
+            `${EXPORT_INTERFACE} > TSPropertySignature`,
+            `${EXPORT_INTERFACE} > TSMethodSignature`,
+            `${EXPORT_INTERFACE} > TSCallSignatureDeclaration`,
           ],
           enableFixer: false,
         }],

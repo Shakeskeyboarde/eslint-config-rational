@@ -84,12 +84,11 @@ export interface Bar {
 
 /** */
 export class Baz {
-  #a = '';
-  #b(): void {
-    console.log();
-  }
+  // #a = '';
+  // #b(): void {
+  //   console.log();
+  // }
 
-  /** */
   constructor() {
     //
   }
