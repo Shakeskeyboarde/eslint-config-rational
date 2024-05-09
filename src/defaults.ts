@@ -1,7 +1,7 @@
 /**
  * Default ignore glob patterns.
  */
-export const defaultIgnores = ['**/{.git,node_modules,out,lib,dist}'] as const;
+export const defaultIgnores = ['**/{.git,node_modules,lib,dist,out,coverage}'] as const;
 /**
  * Default JavaScript file extensions.
  */
