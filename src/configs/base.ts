@@ -17,6 +17,7 @@ export const base = createConfigFactory<{
         'func-style': 'warn',
         'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
         'no-shadow': 'error',
+        'no-undef': 'off',
         'no-unused-vars': ['warn', { args: 'after-used' }],
         'no-useless-rename': 'warn',
         'valid-typeof': 'error',

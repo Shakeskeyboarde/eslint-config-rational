@@ -1,1 +1,2 @@
 // export {};
+console.log('test');

@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {} from 'eslint-plugin-unicorn';
 
+console.log('test');
+
 const props = '';
 const prop = '';
 const args = '';
