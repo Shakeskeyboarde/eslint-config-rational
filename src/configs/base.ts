@@ -14,7 +14,6 @@ export const base = createConfigFactory<{
     {
       files,
       rules: {
-        'func-style': 'warn',
         'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
         'no-shadow': 'error',
         'no-undef': 'off',

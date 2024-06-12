@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {} from 'eslint-plugin-unicorn';
 
