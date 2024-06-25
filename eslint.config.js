@@ -1,3 +1,9 @@
-import { rational } from './lib/index.js';
+import rational, { flatConfigBuilder } from './lib/index.js';
 
-export default rational();
+/**
+ * @type {Linter.FlatConfig[]}
+ */
+export default flatConfigBuilder()
+  .use(rational)
+  .ignore('**/{lib,dist,out,coverage}')
+  .build();

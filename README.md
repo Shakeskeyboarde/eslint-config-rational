@@ -2,78 +2,71 @@
 
 Minimal ESLint configuration for reducing version control noise and avoiding common mistakes.
 
-## Tenets
+This is a composite ESLint configuration which includes many different ESLint plugins and rule defaults.
 
-- Prevent code patterns which frequently cause or lead to bugs.
-- Produce consistent source code without requiring functional changes.
-- Prefer rules which are auto-fixable.
-- Avoid rules which require frequent inline disabling.
-- Avoid rules which are already covered by TypeScript.
-
+> Note: This is a personal project and may not be suitable for all projects, but feel free to open issues for bugs or suggestions.
 ## Getting Started
 
-Install the `eslint-config-rational` package.
+Install the `eslint-config-rational` package and peer dependencies. 
+
+> Note: Only ESLint v8 is currently supported.
 
 ```bash
-npm i -D eslint-config-rational eslint typescript
+npm i -D eslint-config-rational eslint@^8 typescript
 ```
 
 Add the `rational` configuration to your `eslint.config.js` (flat) configuration file.
 
 ```js
-import rational from 'eslint-config-rational';
+import rational, { flatConfigBuilder } from 'eslint-config-rational';
 
-export default rational();
+export default flatConfigBuilder()
+  .use(rational)
+  .ignore('**/{lib,dist,out,coverage}')
+  .build();
 ```
 
-## Options
-
-The `rational(options?)` configuration factory accepts the following options.
-
-- `ignores`: Add ESLint global ignores. Defaults to `['**/{.git,node_modules,out,lib,dist}']`.
-- `jsExtensions`: Array of file extensions to lint as JavaScript. Defaults to `['.js', '.cjs', '.mjs', '.jsx']`.
-- `tsExtensions`: Array of file extensions to lint as TypeScript. Defaults to `['.ts', '.cts', '.mts', '.tsx']`.
-- `jsxExtensions`: Array of file extensions to lint as JSX. Defaults to `['.jsx', '.tsx']`.
-- `relaxedFiles`: Array of file paths to lint with relaxed rules. Defaults to `['**/*.test.*', '**/*.spec.*', '**/*.config.*', '**/*.setup.*', '**/.*rc.*', '**/*.story.*', '**/__*', '**/__*/**', '**/.*', '**/.*/**']`.
-- `enableImports`: Enable import rules. Defaults to `true`.
-- `enableUnicorn`: Enable unicorn rules. Defaults to `true`.
-- `enableReact`: Enable react rules. Defaults to `true`.
-- `enableTypescript`: Enable typescript rules. Defaults to `true`.
-- `enableStylistic`: Enable ESLint Stylistic rules. Defaults to `true`.
-- `extend`: One or more ESLint configurations to extend (nested arrays allowed).
-- `override`: One or more ESLint override configurations (nested arrays allowed).
+Using the `FlatConfigBuilder` is optional but recommended. If you don't want to use it, the above configuration is equivalent to the following vanilla flat configuration.
 
 ```js
 import rational from 'eslint-config-rational';
 
-export default rational({
-  ignores: ['**/{.git,node_modules,out,lib,dist}'],
-  jsExtensions: ['.js', '.cjs', '.mjs', '.jsx'],
-  tsExtensions: ['.ts', '.cts', '.mts', '.tsx'],
-  jsxExtensions: ['.jsx', '.tsx'],
-  relaxedFiles: [
-    '**/*.test.*',
-    '**/*.spec.*',
-    '**/*.config.*',
-    '**/*.setup.*',
-    '**/*.story.*',
-    '**/__*.*',
-    '**/__*/**',
-    '**/.*.*',
-    '**/.*/**',
-  ],
-  enableImports: true,
-  enableUnicorn: true,
-  enableReact: true,
-  enableTypescript: true,
-  enableStylistic: true,
-  extend: [
-    // ESLint configuration or (nested) array of configurations which
-    // will precede the rational configuration.
-  ],
-  override: [
-    // ESLint configuration or (nested) array of configurations which
-    // will follow the rational configuration.
-  ],
-});
+export default [
+  ...rational(),
+  {
+    ignores: ['**/{lib,dist,out,coverage}']
+  }
+];
+```
+
+## Options
+
+Use options to configure TS/JS file extensions, included files, and which of the underlying ESLint plugins are enabled.
+
+```js
+import rational, { flatConfigBuilder } from 'eslint-config-rational';
+
+export default flatConfigBuilder()
+  .use(rational, {
+    // JavaScript
+    jsExtensions: [...],
+    jsFiles: [...],
+    jsSupportFiles: [...],
+    // TypeScript
+    tsExtensions: [...],
+    tsFiles: [...],
+    tsSupportFiles: [...],
+    // Plugins
+    plugins: {
+      import: true;
+      importSort: true;
+      react: true;
+      regexp: true;
+      stylistic: true;
+      typescript: true;
+      unicorn: true;
+    }
+  })
+  .ignore(...)
+  .build();
 ```

@@ -1,15 +1,18 @@
+import { type Linter } from 'eslint';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
-import { createConfigFactory, type NestedConfigs } from '../config.js';
+import { flatConfigBuilder } from '../config.js';
+
+interface Options {
+  files?: string[];
+}
 
 /**
  * ESLint configuration for `eslint-plugin-unicorn`.
  */
-export const unicorn = createConfigFactory<{
-  files: string[];
-}>(({ files }): NestedConfigs => {
-  return [
-    {
+export default ({ files }: Options = {}): Linter.FlatConfig[] => {
+  return flatConfigBuilder()
+    .use({
       files,
       plugins: {
         unicorn: unicornPlugin,
@@ -38,6 +41,6 @@ export const unicorn = createConfigFactory<{
         'unicorn/prefer-number-properties': 'error',
         'unicorn/relative-url-style': 'warn',
       },
-    },
-  ];
-});
+    })
+    .build();
+};

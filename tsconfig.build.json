@@ -6,5 +6,5 @@
     "declaration": true,
     "noEmit": false
   },
-  "include": ["src/**/*.ts", "./global.d.ts"]
+  "include": ["./types.d.ts", "src/**/*.ts"]
 }

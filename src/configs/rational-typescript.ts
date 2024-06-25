@@ -1,34 +1,27 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import { type Linter } from 'eslint';
+import tseslint from 'typescript-eslint';
 
-import { compat } from '../compat.js';
-import { createConfigFactory, type NestedConfigs } from '../config.js';
+import { flatConfigBuilder } from '../config.js';
+
+interface Options {
+  files?: string[];
+  supportFiles?: string[];
+}
 
 /**
  * ESLint configuration for TypeScript.
  */
-export const typescript = createConfigFactory<{
-  files: string[];
-  relaxedFiles: string[];
-}>(({ files, relaxedFiles }): NestedConfigs => {
-  return [
-    // TODO: Update this to flat configuration compatible version when released.
-    compat({
+export default ({ files, supportFiles }: Options = {}): Linter.FlatConfig[] => {
+  return flatConfigBuilder()
+    .use(tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))
+    .use(tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))
+    // Universal Config
+    .use({
       files,
-      extends: [
-        'plugin:import/typescript',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ],
-      parserOptions: {
-        project: getTsConfig(),
-      },
       rules: {
         'no-shadow': 'off',
         'no-undef': 'off',
         'no-unused-vars': 'off',
-        'import/extensions': 'off',
-        'import/no-unresolved': 'off',
         '@typescript-eslint/array-type': 'warn',
         '@typescript-eslint/ban-types': 'off',
         '@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
@@ -66,27 +59,24 @@ export const typescript = createConfigFactory<{
         '@typescript-eslint/switch-exhaustiveness-check': 'warn',
         '@typescript-eslint/unbound-method': 'off',
       },
-    }),
-    {
-      files: relaxedFiles,
+      languageOptions: {
+        parserOptions: {
+          // XXX: Detect relative typescript config instead of setting the
+          // `project` option. Required when using typescript project
+          // references.
+          EXPERIMENTAL_useProjectService: true,
+        },
+      },
+    })
+    // Support Config
+    .use({
+      files: supportFiles,
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
       },
-    },
-  ];
-});
-
-const getTsConfig = (): string | undefined => {
-  let current = process.cwd();
-
-  do {
-    const filename = path.join(current, 'tsconfig.json');
-
-    if (fs.existsSync(filename)) {
-      return filename;
-    }
-  } while (current !== (current = path.dirname(current)));
+    })
+    .build();
 };

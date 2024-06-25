@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
+    "module": "Node16",
     "target": "ES2022",
-    "jsx": "react-jsx",
-    "types": ["node"],
     "strict": true,
+    "strictNullChecks": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true,
     "allowJs": true,
-    "noEmit": true
+    "checkJs": true,
+    "noEmit": true,
+    "jsx": "preserve"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": [".*", "node_modules", "lib", "dist", "out", "coverage"]
+  "include": [
+    "*",
+    "**/src/**/*",
+    "**/test/**/*"
+  ],
 }

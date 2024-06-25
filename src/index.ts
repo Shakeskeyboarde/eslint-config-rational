@@ -1,3 +1,11 @@
-export * from './compat.js';
-export * from './configs/rational.js';
-export * from './defaults.js';
+export * from './config.js';
+export { default } from './configs/rational.js';
+export { default as rationalEslint } from './configs/rational-eslint.js';
+export { default as rationalImport } from './configs/rational-import.js';
+export { default as rationalImportSort } from './configs/rational-import-sort.js';
+export { default as rationalReact } from './configs/rational-react.js';
+export { default as rationalRegexp } from './configs/rational-regexp.js';
+export { default as rationalStylistic } from './configs/rational-stylistic.js';
+export { default as rationalTypescript } from './configs/rational-typescript.js';
+export { default as rationalUnicorn } from './configs/rational-unicorn.js';
+export * from './files.js';
