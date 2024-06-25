@@ -28,12 +28,12 @@ interface LegacyConfig extends Linter.Config {
  * ESLint flat configs validation does not allow explicit undefined values for
  * optional properties.
  */
-const cleanConfig = (value: unknown, visited = new Set()): void => {
+const cleanConfig = (value: unknown, visited: Set<unknown>): void => {
   if (visited.has(value)) return;
 
   if (Array.isArray(value)) {
     visited.add(value);
-    value.forEach((v) => cleanConfig(v));
+    value.forEach((v) => cleanConfig(v, visited));
   }
   else if (Object.prototype.toString.call(value) === '[object Object]') {
     visited.add(value);
@@ -78,7 +78,7 @@ export class FlatConfigBuilder {
     if (!config || typeof config !== 'object') return this;
     if (!Array.isArray(config)) config = [config];
 
-    cleanConfig(config);
+    cleanConfig(config, new Set());
 
     return new FlatConfigBuilder([...this.#configs, ...config]);
   };
