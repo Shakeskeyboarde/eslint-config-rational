@@ -5,8 +5,8 @@ import { flatConfigBuilder } from '../config.js';
 interface Options {
   files?: string[];
   supportFiles?: string[];
-  jsExtensions?: string[];
-  tsExtensions?: string[];
+  jsExtensions?: `.${string}`[];
+  tsExtensions?: `.${string}`[];
   useTypescript?: boolean;
 }
 

@@ -18,7 +18,7 @@ export interface Options {
   /**
    * Override for what file extensions are considered javascript files.
    */
-  jsExtensions?: string[];
+  jsExtensions?: `.${string}`[];
   /**
    * Override globa for which files are considered javascript files.
    */
@@ -33,7 +33,7 @@ export interface Options {
   /**
    * Override for what file extensions are considered typescript files.
    */
-  tsExtensions?: string[];
+  tsExtensions?: `.${string}`[];
   /**
    * Override globs for which files are considered typescript files.
    */
