@@ -7,7 +7,7 @@ This is a composite ESLint configuration which includes many different ESLint pl
 > Note: This is a personal project and may not be suitable for all projects, but feel free to open issues for bugs or suggestions.
 ## Getting Started
 
-Install the `eslint-config-rational` package and peer dependencies. 
+Install the `eslint-config-rational` package and its peer dependencies. 
 
 > Note: Only ESLint v8 is currently supported.
 

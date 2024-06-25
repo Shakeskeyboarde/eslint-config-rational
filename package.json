@@ -18,7 +18,7 @@
     "build": "rm -rf lib && tsc -p tsconfig.build.json",
     "test": "pnpm run build && eslint . --max-warnings=0",
     "prepublishOnly": "pnpm test",
-    "modernize": "npx npm-check-updates@latest -i --format group"
+    "modernize": "npx npm-check-updates@latest -i --peer --format group"
   },
   "packageManager": "pnpm@9.3.0+sha256.e1f9e8d1a16607a46dd3c158b5f7a7dc7945501d1c6222d454d63d033d1d918f",
   "type": "module",
@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^8.57.0",
+    "@eslint/js": "^9.5.0",
     "@stylistic/eslint-plugin": "^2.3.0",
     "@types/eslint": "^8.56.10",
     "@types/eslint__eslintrc": "^2.1.1",
@@ -44,11 +44,13 @@
     "typescript-eslint": "^7.14.1"
   },
   "peerDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "typescript": "^5.5.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.8",
     "@types/react": "^18.3.3",
+    "eslint": "^8.57.0",
     "react": "^18.3.1",
     "typescript": "^5.5.2"
   }
