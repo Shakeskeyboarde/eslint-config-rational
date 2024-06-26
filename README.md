@@ -56,6 +56,9 @@ export default flatConfigBuilder()
     tsExtensions: [...],
     tsFiles: [...],
     tsSupportFiles: [...],
+    // React
+    reactExtensions: [...],
+    reactFiles: [...],
     // Plugins
     plugins: {
       import: true;
