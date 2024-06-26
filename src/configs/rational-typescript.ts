@@ -2,19 +2,23 @@ import { type Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 
 import { flatConfigBuilder } from '../config.js';
+import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionDevFileGlobs, getExtensionFileGlobs } from '../files.js';
 
 export interface TypescriptOptions {
   files?: string[];
-  supportFiles?: string[];
+  devFiles?: string[];
 }
 
 /**
  * ESLint configuration for TypeScript.
  */
-export default ({ files, supportFiles }: TypescriptOptions = {}): Linter.FlatConfig[] => {
+export default ({
+  files = getExtensionFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
+  devFiles = getExtensionDevFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
+}: TypescriptOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use(tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))
-    .use(tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))
+    .use(tseslint.configs.stylisticTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))
     // Universal Config
     .use({
       files,
@@ -24,6 +28,7 @@ export default ({ files, supportFiles }: TypescriptOptions = {}): Linter.FlatCon
         'no-unused-vars': 'off',
         '@typescript-eslint/array-type': 'warn',
         '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/consistent-type-definitions': 'off',
         '@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
         '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
         '@typescript-eslint/explicit-function-return-type': [
@@ -65,12 +70,14 @@ export default ({ files, supportFiles }: TypescriptOptions = {}): Linter.FlatCon
           // `project` option. Required when using typescript project
           // references.
           EXPERIMENTAL_useProjectService: true,
+          // XXX: Future name of the above experimental option (v8 beta, v9).
+          projectService: true,
         },
       },
     })
-    // Support Config
+    // Dev Config
     .use({
-      files: supportFiles,
+      files: devFiles,
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-empty-interface': 'off',

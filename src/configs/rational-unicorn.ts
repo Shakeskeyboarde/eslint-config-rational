@@ -2,6 +2,7 @@ import { type Linter } from 'eslint';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 import { flatConfigBuilder } from '../config.js';
+import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionFileGlobs } from '../files.js';
 
 export interface UnicornOptions {
   files?: string[];
@@ -10,7 +11,9 @@ export interface UnicornOptions {
 /**
  * ESLint configuration for `eslint-plugin-unicorn`.
  */
-export default ({ files }: UnicornOptions = {}): Linter.FlatConfig[] => {
+export default ({
+  files = getExtensionFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
+}: UnicornOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({
       files,

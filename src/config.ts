@@ -2,11 +2,11 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { FlatCompat } from '@eslint/eslintrc';
-import { type Linter } from 'eslint';
+import type ESLint from 'eslint';
 
 type Falsy = boolean | null | undefined | 0 | 0n | '';
 
-interface LegacyConfig extends Linter.Config {
+export interface LegacyConfig extends ESLint.Linter.Config {
   /**
    * Included file patterns for the resulting flat configurations.
    */
@@ -55,9 +55,9 @@ const cleanConfig = (value: unknown, visited: Set<unknown>): void => {
  * Helper for building ESLint flat configurations.
  */
 export class FlatConfigBuilder {
-  readonly #configs: readonly Linter.FlatConfig[] = [];
+  readonly #configs: readonly ESLint.Linter.FlatConfig[] = [];
 
-  protected constructor(configs: Linter.FlatConfig[]) {
+  protected constructor(configs: ESLint.Linter.FlatConfig[]) {
     this.#configs = configs;
   }
 
@@ -66,11 +66,11 @@ export class FlatConfigBuilder {
    */
   readonly use = <TArgs extends unknown[] = []>(
     config:
-      | Linter.FlatConfig
-      | Linter.FlatConfig[]
+      | ESLint.Linter.FlatConfig
+      | ESLint.Linter.FlatConfig[]
       | Falsy
-      | ((...args: TArgs) => Linter.FlatConfig
-      | Linter.FlatConfig[]),
+      | ((...args: TArgs) => ESLint.Linter.FlatConfig
+      | ESLint.Linter.FlatConfig[]),
     ...args: TArgs
   ): FlatConfigBuilder => {
     if (!config || (typeof config !== 'object' && typeof config !== 'function')) return this;
@@ -120,7 +120,7 @@ export class FlatConfigBuilder {
     return this.use({ ignores: [...(current?.ignores ?? []), ...patterns] });
   };
 
-  readonly build = (): Linter.FlatConfig[] => {
+  readonly build = (): ESLint.Linter.FlatConfig[] => {
     return Array.from(this.#configs);
   };
 

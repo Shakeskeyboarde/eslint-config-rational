@@ -1,12 +1,13 @@
 export * from './config.js';
+export * from './configs/options.js';
 export { default } from './configs/rational.js';
-export * from './configs/rational.js';
 export { default as rationalEslint } from './configs/rational-eslint.js';
 export * from './configs/rational-eslint.js';
 export { default as rationalImport } from './configs/rational-import.js';
 export * from './configs/rational-import.js';
 export { default as rationalImportSort } from './configs/rational-import-sort.js';
 export * from './configs/rational-import-sort.js';
+export { default as rationalLanguageOptions } from './configs/rational-language-options.js';
 export { default as rationalReact } from './configs/rational-react.js';
 export * from './configs/rational-react.js';
 export { default as rationalRegexp } from './configs/rational-regexp.js';

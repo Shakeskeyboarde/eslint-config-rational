@@ -2,6 +2,7 @@ import { type Linter } from 'eslint';
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 
 import { flatConfigBuilder } from '../config.js';
+import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionFileGlobs } from '../files.js';
 
 export interface ImportSortOptions {
   files?: string[];
@@ -13,7 +14,7 @@ export interface ImportSortOptions {
  * configuration.
  */
 export default ({
-  files,
+  files = getExtensionFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
 }: ImportSortOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({

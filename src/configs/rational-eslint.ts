@@ -2,23 +2,27 @@ import eslint from '@eslint/js';
 import { type Linter } from 'eslint';
 
 import { flatConfigBuilder } from '../config.js';
+import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionDevFileGlobs, getExtensionFileGlobs } from '../files.js';
 
 export interface EslintOptions {
   files?: string[];
-  supportFiles?: string[];
+  devFiles?: string[];
 }
 
 /**
  * ESLint [core rules](https://eslint.org/docs/latest/rules/) configuration.
  */
-export default ({ files, supportFiles }: EslintOptions = {}): Linter.FlatConfig[] => {
+export default ({
+  files = getExtensionFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
+  devFiles = getExtensionDevFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
+}: EslintOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     // Universal Config
     .use({ ...eslint.configs.recommended, files })
-    // Non-Support Config
+    // Prod Config
     .use({
       files,
-      ignores: supportFiles,
+      ignores: devFiles,
       rules: {
         'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
         'no-shadow': 'error',
@@ -28,9 +32,9 @@ export default ({ files, supportFiles }: EslintOptions = {}): Linter.FlatConfig[
         'valid-typeof': 'error',
       },
     })
-    // Support Config
+    // Dev Config
     .use({
-      files: supportFiles,
+      files: devFiles,
       rules: {
         'no-empty': 'off',
       },

@@ -2,6 +2,7 @@ import stylisticPlugin from '@stylistic/eslint-plugin';
 import { type Linter } from 'eslint';
 
 import { flatConfigBuilder } from '../config.js';
+import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionFileGlobs } from '../files.js';
 
 export interface StylisticOptions {
   files?: string[];
@@ -10,7 +11,9 @@ export interface StylisticOptions {
 /**
  * ESLint configuration for `@stylistic/eslint-plugin`.
  */
-export default ({ files }: StylisticOptions = {}): Linter.FlatConfig[] => {
+export default ({
+  files = getExtensionFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()]),
+}: StylisticOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({
       ...stylisticPlugin.configs.customize({

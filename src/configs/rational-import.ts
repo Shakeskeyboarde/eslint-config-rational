@@ -1,10 +1,11 @@
 import { type Linter } from 'eslint';
 
 import { flatConfigBuilder } from '../config.js';
+import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionDevFileGlobs, getExtensionFileGlobs } from '../files.js';
 
 export interface ImportOptions {
   files?: string[];
-  supportFiles?: string[];
+  devFiles?: string[];
   jsExtensions?: `.${string}`[];
   tsExtensions?: `.${string}`[];
   useTypescript?: boolean;
@@ -16,10 +17,10 @@ export interface ImportOptions {
  * configuration.
  */
 export default ({
-  files,
-  supportFiles,
-  jsExtensions,
-  tsExtensions,
+  jsExtensions = getDefaultJsExtensions(),
+  tsExtensions = getDefaultTsExtensions(),
+  files = getExtensionFileGlobs([...jsExtensions, ...tsExtensions]),
+  devFiles = getExtensionDevFileGlobs([...jsExtensions, ...tsExtensions]),
   useTypescript = Boolean(tsExtensions?.length),
 }: ImportOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
@@ -63,10 +64,10 @@ export default ({
         },
       },
     })
-    // Non-Support Config
+    // Prod Config
     .use({
       files,
-      ignores: supportFiles,
+      ignores: devFiles,
       rules: {
         'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
       },

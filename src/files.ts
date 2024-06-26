@@ -19,14 +19,16 @@ export const getDefaultTsExtensions = (): `.${string}`[] => {
 /**
  * Get glob patterns for files with the given extensions.
  */
-export const getExtensionFileGlobs = (extensions: string[] = getDefaultJsExtensions()): string[] => {
+export const getExtensionFileGlobs = (
+  extensions: string[] = [...getDefaultJsExtensions(), ...getDefaultTsExtensions()],
+): string[] => {
   return [`**/*.{${getNormalExtensions(extensions).join(',')}}`];
 };
 
 /**
  * Get glob patterns for test files with the given extensions.
  */
-export const getExtensionTestFileGlobs = (
+export const getExtensionDevFileGlobs = (
   extensions: string[] = [...getDefaultJsExtensions(), ...getDefaultTsExtensions()],
 ): string[] => {
   extensions = getNormalExtensions(extensions);
