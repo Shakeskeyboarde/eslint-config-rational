@@ -1,4 +1,5 @@
 import { type Linter } from 'eslint';
+import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 
 import { flatConfigBuilder } from '../config.js';
@@ -6,6 +7,7 @@ import { getDefaultJsExtensions, getDefaultTsExtensions, getExtensionFileGlobs }
 
 export interface ReactOptions {
   files?: string[];
+  jsxRuntime?: boolean;
 }
 
 /**
@@ -15,9 +17,11 @@ export interface ReactOptions {
  */
 export default ({
   files = getExtensionFileGlobs([...getDefaultJsExtensions(), ...getDefaultTsExtensions()].filter((ext) => ext.endsWith('x'))),
+  jsxRuntime = true,
 }: ReactOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({ ...reactRecommended, files })
+    .use(jsxRuntime && { ...reactJsxRuntime, files })
     .use({
       files,
       rules: {

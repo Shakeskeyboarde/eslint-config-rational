@@ -85,7 +85,7 @@ export default flatConfigBuilder()
   .use(rationalImportSort)
   // eslint-plugin-import recommended+typescript configs with modifications.
   .use(rationalImport)
-  // eslint-plugin-react recommended config with modifications.
+  // eslint-plugin-react recommended+jsx-runtime configs with modifications.
   .use(rationalReact)
   // eslint-plugin-regexp recommended config.
   .use(rationalRegexp)
