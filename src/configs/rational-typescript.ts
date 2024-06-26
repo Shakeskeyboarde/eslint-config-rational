@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface TypescriptOptions {
   files?: string[];
   supportFiles?: string[];
 }
@@ -11,7 +11,7 @@ interface Options {
 /**
  * ESLint configuration for TypeScript.
  */
-export default ({ files, supportFiles }: Options = {}): Linter.FlatConfig[] => {
+export default ({ files, supportFiles }: TypescriptOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use(tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))
     .use(tseslint.configs.recommendedTypeChecked.map((config) => ({ ...config, files }) as Linter.FlatConfig))

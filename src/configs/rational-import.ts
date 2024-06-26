@@ -2,7 +2,7 @@ import { type Linter } from 'eslint';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface ImportOptions {
   files?: string[];
   supportFiles?: string[];
   jsExtensions?: `.${string}`[];
@@ -21,7 +21,7 @@ export default ({
   jsExtensions,
   tsExtensions,
   useTypescript = Boolean(tsExtensions?.length),
-}: Options = {}): Linter.FlatConfig[] => {
+}: ImportOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     // TODO: Use flat configs when available.
     .useLegacy({

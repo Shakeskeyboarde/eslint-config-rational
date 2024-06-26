@@ -3,14 +3,14 @@ import { type Linter } from 'eslint';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface StylisticOptions {
   files?: string[];
 }
 
 /**
  * ESLint configuration for `@stylistic/eslint-plugin`.
  */
-export default ({ files }: Options = {}): Linter.FlatConfig[] => {
+export default ({ files }: StylisticOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({
       ...stylisticPlugin.configs.customize({

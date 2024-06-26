@@ -3,7 +3,7 @@ import { type Linter } from 'eslint';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface EslintOptions {
   files?: string[];
   supportFiles?: string[];
 }
@@ -11,7 +11,7 @@ interface Options {
 /**
  * ESLint [core rules](https://eslint.org/docs/latest/rules/) configuration.
  */
-export default ({ files, supportFiles }: Options = {}): Linter.FlatConfig[] => {
+export default ({ files, supportFiles }: EslintOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     // Universal Config
     .use({ ...eslint.configs.recommended, files })

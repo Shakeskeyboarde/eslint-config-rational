@@ -3,14 +3,14 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface UnicornOptions {
   files?: string[];
 }
 
 /**
  * ESLint configuration for `eslint-plugin-unicorn`.
  */
-export default ({ files }: Options = {}): Linter.FlatConfig[] => {
+export default ({ files }: UnicornOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({
       files,

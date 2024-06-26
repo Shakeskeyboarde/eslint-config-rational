@@ -3,7 +3,7 @@ import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface ReactOptions {
   files?: string[];
 }
 
@@ -12,7 +12,7 @@ interface Options {
  * [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
  * configuration.
  */
-export default ({ files }: Options = {}): Linter.FlatConfig[] => {
+export default ({ files }: ReactOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({ ...reactRecommended, files })
     .use({

@@ -3,7 +3,7 @@ import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 
 import { flatConfigBuilder } from '../config.js';
 
-interface Options {
+export interface ImportSortOptions {
   files?: string[];
 }
 
@@ -14,7 +14,7 @@ interface Options {
  */
 export default ({
   files,
-}: Options = {}): Linter.FlatConfig[] => {
+}: ImportSortOptions = {}): Linter.FlatConfig[] => {
   return flatConfigBuilder()
     .use({
       files,
