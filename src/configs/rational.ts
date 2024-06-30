@@ -18,16 +18,30 @@ import rationalUnicorn from './rational-unicorn.js';
  * Rational ESLint configurations
  */
 export default (options: Options = {}): Linter.FlatConfig[] => {
-  const {
-    jsExtensions = getDefaultJsExtensions(),
-    jsFiles = getExtensionFileGlobs(jsExtensions),
-    jsDevFiles = getExtensionDevFileGlobs(jsExtensions),
-    tsExtensions = getDefaultTsExtensions(),
-    tsFiles = getExtensionFileGlobs(tsExtensions),
-    tsDevFiles = getExtensionDevFileGlobs(tsExtensions),
-    reactExtensions = [...jsExtensions, ...tsExtensions].filter((file) => file.endsWith('x')),
-    reactFiles = getExtensionFileGlobs(reactExtensions),
-  } = options;
+  const jsExtensions = typeof options.jsExtensions === 'function'
+    ? options.jsExtensions(getDefaultJsExtensions())
+    : options.jsExtensions ?? getDefaultJsExtensions();
+  const jsFiles = typeof options.jsFiles === 'function'
+    ? options.jsFiles(getExtensionFileGlobs(jsExtensions))
+    : options.jsFiles ?? getExtensionFileGlobs(jsExtensions);
+  const jsDevFiles = typeof options.jsDevFiles === 'function'
+    ? options.jsDevFiles(getExtensionDevFileGlobs(jsExtensions))
+    : options.jsDevFiles ?? getExtensionDevFileGlobs(jsExtensions);
+  const tsExtensions = typeof options.tsExtensions === 'function'
+    ? options.tsExtensions(getDefaultTsExtensions())
+    : options.tsExtensions ?? getDefaultTsExtensions();
+  const tsFiles = typeof options.tsFiles === 'function'
+    ? options.tsFiles(getExtensionFileGlobs(tsExtensions))
+    : options.tsFiles ?? getExtensionFileGlobs(tsExtensions);
+  const tsDevFiles = typeof options.tsDevFiles === 'function'
+    ? options.tsDevFiles(getExtensionDevFileGlobs(tsExtensions))
+    : options.tsDevFiles ?? getExtensionDevFileGlobs(tsExtensions);
+  const reactExtensions = typeof options.reactExtensions === 'function'
+    ? options.reactExtensions([...jsExtensions, ...tsExtensions].filter((file) => file.endsWith('x')))
+    : options.reactExtensions ?? [...jsExtensions, ...tsExtensions].filter((file) => file.endsWith('x'));
+  const reactFiles = typeof options.reactFiles === 'function'
+    ? options.reactFiles(getExtensionFileGlobs(reactExtensions))
+    : options.reactFiles ?? getExtensionFileGlobs(reactExtensions);
 
   const files = [...jsFiles, ...tsFiles];
   const devFiles = [...jsDevFiles, ...tsDevFiles];
