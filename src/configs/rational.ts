@@ -8,6 +8,7 @@ import rationalImport from './rational-import.js';
 import rationalImportSort from './rational-import-sort.js';
 import rationalLanguageOptions from './rational-language-options.js';
 import rationalReact from './rational-react.js';
+import rationalReactHooks from './rational-react-hooks.js';
 import rationalRegexp from './rational-regexp.js';
 import rationalStylistic from './rational-stylistic.js';
 import rationalTypescript from './rational-typescript.js';
@@ -53,6 +54,10 @@ export default (options: Options = {}): Linter.FlatConfig[] => {
     .use(plugins?.react !== false && rationalReact, {
       files: reactFiles,
       ...(typeof plugins?.react === 'object' ? plugins.react : {}),
+    })
+    .use(plugins?.reactHooks !== false && rationalReactHooks, {
+      files: reactFiles,
+      ...(typeof plugins?.reactHooks === 'object' ? plugins.reactHooks : {}),
     })
     .use(plugins?.regexp !== false && rationalRegexp, {
       files,
