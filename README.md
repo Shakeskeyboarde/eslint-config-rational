@@ -72,6 +72,7 @@ import {
   rationalImport,
   rationalLanguageOptions,
   rationalReact,
+  rationalReactHooks,
   rationalRegexp,
   rationalStylistic,
   rationalTypescript,
@@ -87,6 +88,8 @@ export default flatConfigBuilder()
   .use(rationalImport)
   // eslint-plugin-react recommended+jsx-runtime configs with modifications.
   .use(rationalReact)
+  // eslint-plugin-react-hooks recommended config.
+  .use(rationalReactHooks)
   // eslint-plugin-regexp recommended config.
   .use(rationalRegexp)
   // eslint-plugin-stylistic recommended config with modifications.

@@ -10,6 +10,8 @@ export * from './configs/rational-import-sort.js';
 export { default as rationalLanguageOptions } from './configs/rational-language-options.js';
 export { default as rationalReact } from './configs/rational-react.js';
 export * from './configs/rational-react.js';
+export { default as rationalReactHooks } from './configs/rational-react-hooks.js';
+export * from './configs/rational-react-hooks.js';
 export { default as rationalRegexp } from './configs/rational-regexp.js';
 export * from './configs/rational-regexp.js';
 export { default as rationalStylistic } from './configs/rational-stylistic.js';
