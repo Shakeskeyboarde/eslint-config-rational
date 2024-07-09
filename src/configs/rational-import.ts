@@ -28,9 +28,7 @@ export default ({
     .useLegacy({
       resolvePluginsRelativeTo: import.meta.url,
       files,
-      extends: useTypescript
-        ? ['plugin:import/recommended', 'plugin:import/typescript']
-        : ['plugin:import/recommended'],
+      plugins: ['import'],
     })
     // Universal Config
     .use({
@@ -41,9 +39,7 @@ export default ({
           pattern: { js: 'always' },
         }],
         'import/no-cycle': 'error',
-        'import/no-named-as-default-member': 'off',
         'import/no-self-import': 'error',
-        'import/no-unresolved': 'error',
       },
       languageOptions: {
         sourceType: 'module',
