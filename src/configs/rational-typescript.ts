@@ -45,6 +45,8 @@ export default ({
           'warn',
           { ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams', '{}'] },
         ],
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-floating-promises': 'error',
         '@typescript-eslint/no-shadow': 'error',
@@ -79,8 +81,6 @@ export default ({
     .use({
       files: devFiles,
       rules: {
-        '@typescript-eslint/no-empty-function': 'off',
-        '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
       },
