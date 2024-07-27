@@ -1,5 +1,6 @@
 import { type ImportOptions } from './rational-import.js';
 import { type ImportSortOptions } from './rational-import-sort.js';
+import { type PrettierOptions } from './rational-prettier.js';
 import { type ReactOptions } from './rational-react.js';
 import { type ReactHooksOptions } from './rational-react-hooks.js';
 import { type RegexpOptions } from './rational-regexp.js';
@@ -70,5 +71,6 @@ export interface Options {
     stylistic?: boolean | StylisticOptions;
     typescript?: boolean | TypescriptOptions;
     unicorn?: boolean | UnicornOptions;
+    prettier?: boolean | PrettierOptions;
   };
 }

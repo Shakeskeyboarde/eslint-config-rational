@@ -7,6 +7,7 @@ import rationalEslint from './rational-eslint.js';
 import rationalImport from './rational-import.js';
 import rationalImportSort from './rational-import-sort.js';
 import rationalLanguageOptions from './rational-language-options.js';
+import rationalPrettier from './rational-prettier.js';
 import rationalReact from './rational-react.js';
 import rationalReactHooks from './rational-react-hooks.js';
 import rationalRegexp from './rational-regexp.js';
@@ -89,6 +90,10 @@ export default (options: Options = {}): Linter.FlatConfig[] => {
     .use(plugins?.unicorn !== false && rationalUnicorn, {
       files,
       ...(typeof plugins?.unicorn === 'object' ? plugins.unicorn : {}),
+    })
+    .use(plugins?.prettier === true && rationalPrettier, {
+      files,
+      ...(typeof plugins?.prettier === 'object' ? plugins.prettier : {}),
     })
     .use(rationalLanguageOptions)
     .build();
