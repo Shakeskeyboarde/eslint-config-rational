@@ -35,6 +35,9 @@ importers:
       eslint-plugin-import:
         specifier: npm:eslint-plugin-i@^2.29.1
         version: eslint-plugin-i@2.29.1(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-prettier:
+        specifier: ^5.2.1
+        version: 5.2.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.3)
       eslint-plugin-react:
         specifier: ^7.34.3
         version: 7.35.0(eslint@8.57.0)
@@ -50,6 +53,9 @@ importers:
       eslint-plugin-unicorn:
         specifier: ^54.0.0
         version: 54.0.0(eslint@8.57.0)
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript-eslint:
         specifier: ^7.14.1
         version: 7.17.0(eslint@8.57.0)(typescript@5.5.4)
@@ -63,12 +69,6 @@ importers:
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
-      eslint-plugin-prettier:
-        specifier: ^5.2.1
-        version: 5.2.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.3)
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
       react:
         specifier: ^18.3.1
         version: 18.3.1
